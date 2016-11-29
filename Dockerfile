@@ -3,7 +3,10 @@
 # Based on nvidia/cuda:devel-centos6
 
 FROM nvidia/cuda:devel-centos6
+
 MAINTAINER Aloys Baillet
+
+LABEL pxr.usd.version="7.1.0"
 
 ENV OUT_FOLDER /opt/usd
 ENV BUILD_PROCS 7
@@ -14,6 +17,9 @@ ENV DOWNLOADS_DIR /tmp/usd-downloads
 ENV PATH $BUILD_DIR/bin:$PATH
 ENV PKG_CONFIG_PATH=$BUILD_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
 ENV LD_LIBRARY_PATH=$BUILD_DIR/lib64:$BUILD_DIR/lib:$LD_LIBRARY_PATH
+
+COPY build/install_pkgs.sh /tmp/
+RUN /tmp/install_pkgs.sh
 
 COPY build/download.sh /tmp/
 RUN /tmp/download.sh

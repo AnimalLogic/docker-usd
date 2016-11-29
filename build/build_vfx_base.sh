@@ -111,6 +111,9 @@ cd $TMP_DIR &&\
 cd $TMP_DIR && \
     tar -zxf $DOWNLOADS_DIR/qt-everywhere-opensource-src-4.8.6.tar.gz && \
     cd $TMP_DIR/qt-everywhere-opensource-src-4.8.6 && \
+    #unzip $DOWNLOADS_DIR/Qt-4_8_6_forMaya2016.zip -d $TMP_DIR  && \
+    #tar -zxf $TMP_DIR/Qt/qt-adsk-4.8.6.tgz && \
+    #cd qt-adsk-4.8.6 && \
     ./configure \
         -prefix $BUILD_DIR \
         -opensource \

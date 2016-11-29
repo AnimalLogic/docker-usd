@@ -1,2 +1,2 @@
 #!/bin/sh
-nvidia-docker build -t "aloys/usd" .
+nvidia-docker build -t "aloysbaillet/usd-7.1" .
