@@ -18,7 +18,14 @@ cd $TMP_DIR && \
     make install;
 
 
-wget https://bootstrap.pypa.io/ez_setup.py -O - | $BUILD_DIR/bin/python
+#----------------------------------------------
+# build and install setuptools
+#----------------------------------------------
+wget https://pypi.io/packages/source/s/setuptools/setuptools-30.0.0.tar.gz -P $DOWNLOADS_DIR -nc --no-check-certificate
+cd $TMP_DIR && \
+ 	tar -zxf $DOWNLOADS_DIR/setuptools-30.0.0.tar.gz && \
+    cd $TMP_DIR/setuptools-30.0.0 && \
+    $BUILD_DIR/bin/python setup.py install;
 
 #----------------------------------------------
 # build and install readline
@@ -55,7 +62,6 @@ cd $TMP_DIR &&\
     cd $TMP_DIR/jpeg-8c && \
     ./configure \
         --prefix=$BUILD_DIR && \
-    make clean && \
     make && \
     make install;
 
@@ -67,7 +73,6 @@ cd $TMP_DIR &&\
     cd $TMP_DIR/tiff-3.8.2 && \
     ./configure \
         --prefix=$BUILD_DIR && \
-        make clean && \
         make && \
         make install;
 
@@ -75,25 +80,23 @@ cd $TMP_DIR &&\
 # build and install PNG
 #----------------------------------------------
 cd $TMP_DIR &&\
-    tar -zxf $DOWNLOADS_DIR/libpng-1.6.3.tar.gz && \
-    cd $TMP_DIR/libpng-1.6.3 && \
+    tar -zxf $DOWNLOADS_DIR/libpng-1.6.26.tar.gz && \
+    cd $TMP_DIR/libpng-1.6.26 && \
     ./configure \
         --prefix=$BUILD_DIR && \
-    make clean && \
     make && \
     make install;
 
 #----------------------------------------------
 # build and install Freetype
 #----------------------------------------------
-# cd $TMP_DIR &&\
-#     tar -zxf $DOWNLOADS_DIR/freetype-2.4.12.tar.gz && \
-#     cd $TMP_DIR/freetype-2.4.12 && \
-#     ./configure \
-#         --prefix=$BUILD_DIR && \
-#     make clean && \
-#     make && \
-#     make install;
+cd $TMP_DIR &&\
+    tar -zxf $DOWNLOADS_DIR/freetype-2.4.12.tar.gz && \
+    cd $TMP_DIR/freetype-2.4.12 && \
+    ./configure \
+        --prefix=$BUILD_DIR && \
+    make && \
+    make install;
 
 #----------------------------------------------
 # build and install PyOpenGL
@@ -146,7 +149,6 @@ cd $TMP_DIR &&\
       -DPYTHON_SITE_PACKAGES=$BUILD_DIR/lib/python2.7/site-packages \
       -DCMAKE_PREFIX_PATH=$BUILD_DIR \
       -DPYTHON_EXECUTABLE=$BUILD_DIR/bin/python &&\
-    make clean && \
     make VERBOSE=1 -j ${BUILD_PROCS} &&\
     make install &&\
     cd $TMP_DIR/pyside-qt4.8+1.2.2 &&\
@@ -158,7 +160,6 @@ cd $TMP_DIR &&\
       -DPYTHON_SITE_PACKAGES=$BUILD_DIR/lib/python2.7/site-packages \
       -DCMAKE_PREFIX_PATH=$BUILD_DIR \
       -DPYTHON_EXECUTABLE=$BUILD_DIR/bin/python &&\
-    make clean && \
     make VERBOSE=1 -j ${BUILD_PROCS} &&\
     make install &&\
     cd $TMP_DIR/Tools-0.2.15 &&\
@@ -169,7 +170,6 @@ cd $TMP_DIR &&\
       -DPYTHON_SITE_PACKAGES=$BUILD_DIR/lib/python2.7/site-packages \
       -DCMAKE_PREFIX_PATH=$BUILD_DIR \
       -DPYTHON_EXECUTABLE=$BUILD_DIR/bin/python &&\
-    make clean &&\
     make -j ${BUILD_PROCS} &&\
     make install;
 
@@ -199,7 +199,6 @@ mkdir -p $BUILD_DIR/lib64/pkgconfig &&\
     cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/glew-1.10.0.tgz &&\
     cd $TMP_DIR/glew-1.10.0 &&\
-    make clean && \
     make install GLEW_DEST=$BUILD_DIR LIBDIR=$BUILD_DIR/lib;
 
 #----------------------------------------------
@@ -212,7 +211,6 @@ cd $TMP_DIR &&\
         --prefix=$BUILD_DIR \
         --enable-threadsafe \
         --with-pthread=/usr/include &&\
-     make clean && \
      make -j ${BUILD_PROCS} && \
      make install
 
@@ -258,3 +256,4 @@ cd $TMP_DIR &&\
     make install
 
 rm -rf $TMP_DIR
+

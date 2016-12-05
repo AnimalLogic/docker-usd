@@ -37,7 +37,6 @@ cd $TMP_DIR &&\
         -DCMAKE_C_COMPILER=gcc \
         -DCMAKE_CXX_COMPILER=g++ \
         -DOCIO_BUILD_NUKE=OFF &&\
-    make clean && \
     make -j ${BUILD_PROCS} && \
     make install;
 
@@ -51,7 +50,6 @@ mkdir -p $BUILD_DIR/openColorIO &&\
 #----------------------------------------------
 # build and install OIIO
 #----------------------------------------------
-ln -s $BUILD_DIR/lib64/lib* $BUILD_DIR/lib/
 cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/oiio-1.5.11.tar.gz &&\
     cd oiio-Release-1.5.11 &&\
@@ -66,11 +64,19 @@ cd $TMP_DIR &&\
     make install
 
 #----------------------------------------------
-# build and install Jinja2
+# build and install MarkupSafe (Jinja2 dependency)
 #----------------------------------------------
-wget https://pypi.python.org/packages/f2/2f/0b98b06a345a761bec91a079ccae392d282690c2d8272e708f4d10829e22/Jinja2-2.8.tar.gz -P $TMP_DIR
 cd $TMP_DIR &&\
-    tar -zxf $TMP_DIR/Jinja2-2.8.tar.gz &&\
+    tar -zxf $DOWNLOADS_DIR/MarkupSafe-0.23.tar.gz &&\
+    cd $TMP_DIR/MarkupSafe-0.23 && \
+    python setup.py build && \
+    python setup.py install --prefix=$BUILD_DIR
+
+#----------------------------------------------
+# build and install Jinja2 (USD Dependency)
+#----------------------------------------------
+cd $TMP_DIR &&\
+    tar -zxf $DOWNLOADS_DIR/Jinja2-2.8.tar.gz &&\
     cd $TMP_DIR/Jinja2-2.8 && \
     python setup.py build && \
     python setup.py install --prefix=$BUILD_DIR
@@ -146,3 +152,4 @@ cd $TMP_DIR &&\
     make install
 
 rm -rf $TMP_DIR
+

@@ -32,4 +32,7 @@ cd $TMP_DIR && \
     cd binutils-2.24 && CFLAGS=-m64 ./configure --prefix=$BUILD_DIR && \
     CFLAGS=-m64 LDFLAGS=-L$BUILD_DIR/lib64 make -j $BUILD_PROCS && make install
 
+ln -s $BUILD_DIR/lib64/lib* $BUILD_DIR/lib/
+
 rm -rf $TMP_DIR
+

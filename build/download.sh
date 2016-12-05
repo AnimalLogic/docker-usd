@@ -15,7 +15,7 @@ wget https://pypi.python.org/packages/source/r/readline/readline-6.2.4.1.tar.gz 
 wget http://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.bz2 -P $DOWNLOADS_DIR -nc
 wget http://www.ijg.org/files/jpegsrc.v8c.tar.gz -P $DOWNLOADS_DIR -nc
 wget http://libtiff.maptools.org/dl/tiff-3.8.2.tar.gz -P $DOWNLOADS_DIR -nc
-wget ftp://ftp.simplesystems.org/pub/libpng/png/src/history/libpng16/libpng-1.6.3.tar.gz -P $DOWNLOADS_DIR -nc
+wget http://prdownloads.sourceforge.net/libpng/libpng-1.6.26.tar.gz -P $DOWNLOADS_DIR -nc
 wget http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.gz -P $DOWNLOADS_DIR -nc
 wget https://pypi.python.org/packages/source/P/PyOpenGL/PyOpenGL-3.0.2.tar.gz -P $DOWNLOADS_DIR -nc
 wget http://download.qt.io/archive/qt/4.8/4.8.6/qt-everywhere-opensource-src-4.8.6.tar.gz -P $DOWNLOADS_DIR -nc
@@ -40,4 +40,6 @@ wget http://github.com/wdas/ptex/archive/v2.0.41.tar.gz -O $DOWNLOADS_DIR/ptex-2
 wget https://github.com/glfw/glfw/releases/download/3.2.1/glfw-3.2.1.zip -P $DOWNLOADS_DIR -nc
 wget https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v3_0_5.tar.gz -O $DOWNLOADS_DIR/OpenSubdiv-3_0_5.tar.gz -nc
 wget https://github.com/jemalloc/jemalloc/releases/download/4.3.1/jemalloc-4.3.1.tar.bz2 -P $DOWNLOADS_DIR -nc
+wget https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-0.23.tar.gz -P $DOWNLOADS_DIR -nc
+wget https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.8.tar.gz -P $DOWNLOADS_DIR -nc
 wget https://github.com/PixarAnimationStudios/USD/archive/v0.7.1.tar.gz -O $DOWNLOADS_DIR/USD-0.7.1.tar.gz -nc
