@@ -59,7 +59,7 @@ RUN yum -y install \
     xorg-x11-fonts-Type1 \
     ca-certificates
 
-COPY cert/*.pem /etc/pki/ca-trust/source/anchors/
+COPY cert/* /etc/pki/ca-trust/source/anchors/
 
 RUN update-ca-trust force-enable && \
     update-ca-trust extract

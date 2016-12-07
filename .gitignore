@@ -1,5 +1,5 @@
 *~
-cert/
+cert/*.pem
 .project
 .pydevproject
 .cproject
