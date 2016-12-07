@@ -4,12 +4,6 @@ set -e
 # create build dir
 mkdir -p $DOWNLOADS_DIR
 
-wget https://ftp.gnu.org/gnu/binutils/binutils-2.24.tar.gz -P $DOWNLOADS_DIR -nc
-wget http://www.mpfr.org/mpfr-3.1.2/mpfr-3.1.2.tar.gz -P $DOWNLOADS_DIR -nc
-wget https://ftp.gnu.org/gnu/gmp/gmp-5.1.2.tar.bz2 -P $DOWNLOADS_DIR -nc
-wget https://ftp.gnu.org/gnu/mpc/mpc-1.0.1.tar.gz -P $DOWNLOADS_DIR -nc
-wget https://ftp.gnu.org/gnu/gcc/gcc-4.8.3/gcc-4.8.3.tar.gz -P $DOWNLOADS_DIR -nc
-
 wget https://www.python.org/ftp/python/2.7.5/Python-2.7.5.tar.bz2 -P $DOWNLOADS_DIR -nc
 wget https://pypi.python.org/packages/source/r/readline/readline-6.2.4.1.tar.gz -P $DOWNLOADS_DIR -nc
 wget http://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.bz2 -P $DOWNLOADS_DIR -nc
@@ -42,4 +36,3 @@ wget https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v3_0_5.tar.gz -
 wget https://github.com/jemalloc/jemalloc/releases/download/4.3.1/jemalloc-4.3.1.tar.bz2 -P $DOWNLOADS_DIR -nc
 wget https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-0.23.tar.gz -P $DOWNLOADS_DIR -nc
 wget https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.8.tar.gz -P $DOWNLOADS_DIR -nc
-wget https://github.com/PixarAnimationStudios/USD/archive/v0.7.1.tar.gz -O $DOWNLOADS_DIR/USD-0.7.1.tar.gz -nc

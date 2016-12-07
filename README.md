@@ -11,6 +11,6 @@ To run usdview once built:
 ```
 
 ## Credits:
-* For the awesome GPU-enabled docker base images: https://github.com/NVIDIA/nvidia-docker
-* For the VFX Platform build base: https://github.com/EfestoLab/docker-buildGaffer
-* For USD: openusd.org
+* For USD: http://openusd.org
+* For the GPU-enabled docker base images: https://github.com/NVIDIA/nvidia-docker
+* For the VFX Platform docker build inspiration: https://github.com/EfestoLab/docker-buildGaffer

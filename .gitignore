@@ -1,2 +1,7 @@
 *~
+cert/
+.project
+.pydevproject
+.cproject
+.settings/
 
