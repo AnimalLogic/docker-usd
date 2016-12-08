@@ -146,6 +146,7 @@ cd $TMP_DIR &&\
       -DGLFW_LIBRARIES=dl \
       -DGLEW_INCLUDE_DIR=$BUILD_DIR/include \
       -DGLEW_LIBRARY=$BUILD_DIR/lib/libGLEW.so \
+      -DOPENCL_INCLUDE_DIRS=/usr/local/cuda/include \
       -DNO_EXAMPLES=ON \
       -DNO_TUTORIALS=ON && \
     make -j ${BUILD_PROCS} VERBOSE=1 && \
