@@ -90,9 +90,7 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/PyOpenGL-3.0.2.tar.gz &&\
     cd $TMP_DIR/PyOpenGL-3.0.2 &&\
-    python setup.py install \
-        --prefix $BUILD_DIR \
-        --install-lib $BUILD_DIR/lib/python2.7/site-packages/
+    python setup.py install
 
 #----------------------------------------------
 # build and install Qt
@@ -206,8 +204,7 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/numpy-1.9.2.tar.gz &&\
     cd $TMP_DIR/numpy-1.9.2 && \
-    python setup.py build && \
-    python setup.py install --prefix=$BUILD_DIR
+    python setup.py install
 
 #----------------------------------------------
 # build and install google/double-conversion
