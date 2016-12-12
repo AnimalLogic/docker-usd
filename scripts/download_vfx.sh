@@ -32,7 +32,7 @@ wget https://github.com/alembic/alembic/archive/1.5.8.zip -O $DOWNLOADS_DIR/alem
 wget https://github.com/google/double-conversion/archive/v1.1.5.tar.gz -O $DOWNLOADS_DIR/double-conversion-1.1.5.tar.gz -nc
 wget http://github.com/wdas/ptex/archive/v2.0.41.tar.gz -O $DOWNLOADS_DIR/ptex-2.0.41.tar.gz -nc
 wget https://github.com/glfw/glfw/releases/download/3.2.1/glfw-3.2.1.zip -P $DOWNLOADS_DIR -nc
-wget https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v3_0_5.tar.gz -O $DOWNLOADS_DIR/OpenSubdiv-3_0_5.tar.gz -nc
+wget https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v3_1_0.tar.gz -O $DOWNLOADS_DIR/OpenSubdiv-3_1_0.tar.gz -nc
 wget https://github.com/jemalloc/jemalloc/releases/download/4.3.1/jemalloc-4.3.1.tar.bz2 -P $DOWNLOADS_DIR -nc
 wget https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-0.23.tar.gz -P $DOWNLOADS_DIR -nc
 wget https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.8.tar.gz -P $DOWNLOADS_DIR -nc

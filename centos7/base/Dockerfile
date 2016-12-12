@@ -2,7 +2,7 @@
 # Dockerfile to build USD on VFX Platform 2016
 # Based on nvidia/cuda:devel-centos6
 
-FROM nvidia/cuda:devel-centos6
+FROM nvidia/cuda:devel-centos7
 
 MAINTAINER Aloys Baillet - Animal Logic
 
@@ -18,7 +18,6 @@ ENV LD_LIBRARY_PATH=$BUILD_DIR/lib64:$BUILD_DIR/lib:$LD_LIBRARY_PATH
 RUN yum -y groupinstall "Development Tools"
 RUN yum -y install \
     wget \
-    cmake \
     openssl-devel \
     openssl \
     sqlite-devel \
@@ -29,6 +28,7 @@ RUN yum -y install \
     wget \
     git \
     tar \
+    cmake \
     bzip2 \
     bzip2-devel \
     glibc-devel.x86_64 \
@@ -36,7 +36,6 @@ RUN yum -y install \
     zlib-devel.x86_64 \
     texinfo.x86_64 \
     libXext-devel \
-    cmake \
     openssl-devel \
     libXext-devel \
     libXt-devel \
@@ -57,20 +56,15 @@ RUN yum -y install \
     libXi-devel \
     pulseaudio-libs-devel.x86_64 \
     xorg-x11-fonts-Type1 \
-    ca-certificates
+    ca-certificates \
+    python-devel
 
 COPY cert/* /etc/pki/ca-trust/source/anchors/
 
 RUN update-ca-trust force-enable && \
     update-ca-trust extract
 
-COPY scripts/download_gcc.sh /tmp/
-RUN /tmp/download_gcc.sh
-
-COPY scripts/build_gcc.sh /tmp/
-RUN /tmp/build_gcc.sh
-
-ENV CC=$BUILD_DIR/bin/gcc
-ENV CXX=$BUILD_DIR/bin/g++
+COPY scripts/build_cmake.sh /tmp/
+RUN /tmp/build_cmake.sh
 
 CMD bash

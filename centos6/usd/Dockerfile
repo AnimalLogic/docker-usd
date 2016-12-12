@@ -2,7 +2,7 @@
 # Dockerfile to build USD on VFX Platform 2016
 # Based on nvidia/cuda:devel-centos6
 
-FROM usd-docker/vfx:7.1
+FROM usd-docker/vfx:centos6-7.1
 
 MAINTAINER Aloys Baillet
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-
+<<<<<<< Updated upstream
 extra_volumes=$(cat <<-END
     -v="/usr/lib64/libGL.so:/usr/lib64/libGL.so:ro"
     -v="/usr/lib64/libGL.so.1:/usr/lib64/libGL.so.1:ro"
@@ -53,4 +53,7 @@ extra_volumes=$(cat <<-END
 END
 )
 
-nvidia-docker run --name "usd-7.1" --rm -it -e "DISPLAY=unix:0.0" -v="/tmp/.X11-unix:/tmp/.X11-unix:rw" -v="$HOME:/home/usd:rw" ${extra_volumes} "usd-docker/usd:centos7-7.1" "$@"
+docker run --name "usd-7.1" --rm -it -e "DISPLAY=unix:0.0" -v="/tmp/.X11-unix:/tmp/.X11-unix:rw" -v="$HOME:/home/usd:rw" ${extra_volumes} "usd-docker/usd:7.1" "$@"
+=======
+nvidia-docker run --name "usd-7.1" --rm -it -e "DISPLAY=unix:0.0" -v="/tmp/.X11-unix:/tmp/.X11-unix:rw" -v="$HOME:/home/usd:rw" "usd-docker/usd:centos7-7.1" "$@"
+>>>>>>> Stashed changes

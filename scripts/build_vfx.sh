@@ -133,17 +133,15 @@ cd $TMP_DIR &&\
 # build and install OpenSubdiv
 #----------------------------------------------
 cd $TMP_DIR &&\
-   tar -zxf $DOWNLOADS_DIR/OpenSubdiv-3_0_5.tar.gz && \
-   cd $TMP_DIR/OpenSubdiv-3_0_5 && \
-   sed -i 's/compute_11/compute_20/g' opensubdiv/CMakeLists.txt &&\
+   tar -zxf $DOWNLOADS_DIR/OpenSubdiv-3_1_0.tar.gz && \
+   cd $TMP_DIR/OpenSubdiv-3_1_0 && \
     cmake \
       -DCMAKE_INSTALL_PREFIX=$BUILD_DIR \
-      -DTBB_INCLUDE_DIR=$BUILD_DIR/include \
-      -DTBB_LIBRARIES=dl \
-      -DPTEX_INCLUDE_DIR=$BUILD_DIR/include/ptex \
-      -DPTEX_LIBRARY=$BUILD_DIR/lib/libPtex.so \
-      -DGLFW_INCLUDE_DIR=$BUILD_DIR/include \
-      -DGLFW_LIBRARIES=dl \
+      -DTBB_LOCATION=$BUILD_DIR \
+      -DPTEX_INCLUDE_DIR=$BUILD_DIR/include \
+      -DOPENCL_LIBRARIES=OpenCL \
+      -DPTEX_LOCATION=$BUILD_DIR \
+      -DGLFW_LOCATION=$BUILD_DIR \
       -DGLEW_INCLUDE_DIR=$BUILD_DIR/include \
       -DGLEW_LIBRARY=$BUILD_DIR/lib/libGLEW.so \
       -DOPENCL_INCLUDE_DIRS=/usr/local/cuda/include \
@@ -153,4 +151,3 @@ cd $TMP_DIR &&\
     make install
 
 rm -rf $TMP_DIR
-

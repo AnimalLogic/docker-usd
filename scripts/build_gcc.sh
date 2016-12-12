@@ -34,5 +34,17 @@ cd $TMP_DIR && \
 
 ln -s $BUILD_DIR/lib64/lib* $BUILD_DIR/lib/
 
-rm -rf $TMP_DIR
+#----------------------------------------------
+# build and install PYTHON
+#----------------------------------------------
+cd $TMP_DIR && \
+    tar -jxf $DOWNLOADS_DIR/Python-2.7.5.tar.bz2 && \
+    cd $TMP_DIR/Python-2.7.5 && \
+    ./configure \
+         --prefix=$BUILD_DIR \
+         --enable-unicode=ucs4 \
+         --enable-shared && \
+    make -j $BUILD_PROCS && \
+    make install
 
+rm -rf $TMP_DIR

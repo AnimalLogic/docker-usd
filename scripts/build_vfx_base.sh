@@ -5,27 +5,13 @@ set -e
 mkdir -p $TMP_DIR
 
 #----------------------------------------------
-# build and install PYTHON
-#----------------------------------------------
-cd $TMP_DIR && \
-    tar -jxf $DOWNLOADS_DIR/Python-2.7.5.tar.bz2 && \
-    cd $TMP_DIR/Python-2.7.5 && \
-    ./configure \
-         --prefix=$BUILD_DIR \
-         --enable-unicode=ucs4 \
-         --enable-shared && \
-    make -j $BUILD_PROCS && \
-    make install;
-
-
-#----------------------------------------------
 # build and install setuptools
 #----------------------------------------------
 wget https://pypi.io/packages/source/s/setuptools/setuptools-30.0.0.tar.gz -P $DOWNLOADS_DIR -nc --no-check-certificate
 cd $TMP_DIR && \
  	tar -zxf $DOWNLOADS_DIR/setuptools-30.0.0.tar.gz && \
     cd $TMP_DIR/setuptools-30.0.0 && \
-    $BUILD_DIR/bin/python setup.py install;
+    python setup.py install
 
 #----------------------------------------------
 # build and install readline
@@ -33,7 +19,7 @@ cd $TMP_DIR && \
 cd $TMP_DIR && \
  	tar -zxf $DOWNLOADS_DIR/readline-6.2.4.1.tar.gz && \
     cd $TMP_DIR/readline-6.2.4.1 && \
-    $BUILD_DIR/bin/python setup.py install;
+    python setup.py install
 
 #----------------------------------------------
 # build and install boost
@@ -52,7 +38,7 @@ cd $TMP_DIR &&\
         link=shared \
         link=static \
         threading=multi \
-        install;
+        install
 
 #----------------------------------------------
 # build and install JPEG
@@ -63,7 +49,7 @@ cd $TMP_DIR &&\
     ./configure \
         --prefix=$BUILD_DIR && \
     make && \
-    make install;
+    make install
 
 #----------------------------------------------
 # build and install TIFF
@@ -74,7 +60,7 @@ cd $TMP_DIR &&\
     ./configure \
         --prefix=$BUILD_DIR && \
         make && \
-        make install;
+        make install
 
 #----------------------------------------------
 # build and install PNG
@@ -85,7 +71,7 @@ cd $TMP_DIR &&\
     ./configure \
         --prefix=$BUILD_DIR && \
     make && \
-    make install;
+    make install
 
 #----------------------------------------------
 # build and install Freetype
@@ -96,7 +82,7 @@ cd $TMP_DIR &&\
     ./configure \
         --prefix=$BUILD_DIR && \
     make && \
-    make install;
+    make install
 
 #----------------------------------------------
 # build and install PyOpenGL
@@ -104,7 +90,7 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/PyOpenGL-3.0.2.tar.gz &&\
     cd $TMP_DIR/PyOpenGL-3.0.2 &&\
-    $BUILD_DIR/bin/python setup.py install \
+    python setup.py install \
         --prefix $BUILD_DIR \
         --install-lib $BUILD_DIR/lib/python2.7/site-packages/
 
@@ -171,7 +157,7 @@ cd $TMP_DIR &&\
       -DCMAKE_PREFIX_PATH=$BUILD_DIR \
       -DPYTHON_EXECUTABLE=$BUILD_DIR/bin/python &&\
     make -j ${BUILD_PROCS} &&\
-    make install;
+    make install
 
 #----------------------------------------------
 # build and install TBB
@@ -256,4 +242,3 @@ cd $TMP_DIR &&\
     make install
 
 rm -rf $TMP_DIR
-
