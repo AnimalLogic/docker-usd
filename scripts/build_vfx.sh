@@ -57,9 +57,7 @@ cd $TMP_DIR &&\
     cd build &&\
     cmake .. \
       -DCMAKE_INSTALL_PREFIX=$BUILD_DIR \
-      -DPYTHON_SITE_PACKAGES=$BUILD_DIR/lib/python2.7/site-packages \
-      -DCMAKE_PREFIX_PATH=$BUILD_DIR \
-      -DPYTHON_EXECUTABLE=$BUILD_DIR/bin/python &&\
+      -DCMAKE_PREFIX_PATH=$BUILD_DIR && \
     make -j ${BUILD_PROCS} && \
     make install
 
@@ -133,18 +131,23 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
    tar -zxf $DOWNLOADS_DIR/OpenSubdiv-3_1_0.tar.gz && \
    cd $TMP_DIR/OpenSubdiv-3_1_0 && \
-    /usr/bin/cmake \
+   mkdir build && \
+   cd build && \
+   /usr/bin/cmake .. \
       -DCMAKE_INSTALL_PREFIX=$BUILD_DIR \
+      -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda \
+      -DOPENCL_INCLUDE_DIRS=/usr/local/cuda/include \
+      -DOPENCL_LIBRARIES=/usr/local/cuda/lib64/libOpenCL.so \
       -DTBB_LOCATION=$BUILD_DIR \
       -DPTEX_INCLUDE_DIR=$BUILD_DIR/include \
-      -DOPENCL_LIBRARIES=OpenCL \
       -DPTEX_LOCATION=$BUILD_DIR \
       -DGLFW_LOCATION=$BUILD_DIR \
       -DGLEW_INCLUDE_DIR=$BUILD_DIR/include \
       -DGLEW_LIBRARY=$BUILD_DIR/lib/libGLEW.so \
       -DNO_EXAMPLES=ON \
+      -DNO_REGRESSION=1 \
       -DNO_TUTORIALS=ON && \
-    make -j ${BUILD_PROCS} VERBOSE=1 && \
+    make VERBOSE=1 && \
     make install
 
 rm -rf $TMP_DIR
