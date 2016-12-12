@@ -4,7 +4,6 @@ set -e
 # create build dir
 mkdir -p $DOWNLOADS_DIR
 
-wget https://www.python.org/ftp/python/2.7.5/Python-2.7.5.tar.bz2 -P $DOWNLOADS_DIR -nc
 wget https://pypi.python.org/packages/source/r/readline/readline-6.2.4.1.tar.gz -P $DOWNLOADS_DIR -nc
 wget http://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.bz2 -P $DOWNLOADS_DIR -nc
 wget http://www.ijg.org/files/jpegsrc.v8c.tar.gz -P $DOWNLOADS_DIR -nc

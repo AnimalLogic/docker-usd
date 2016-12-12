@@ -11,7 +11,7 @@ wget https://pypi.io/packages/source/s/setuptools/setuptools-30.0.0.tar.gz -P $D
 cd $TMP_DIR && \
  	tar -zxf $DOWNLOADS_DIR/setuptools-30.0.0.tar.gz && \
     cd $TMP_DIR/setuptools-30.0.0 && \
-    python setup.py install
+    $PYTHON_EXECUTABLE setup.py install
 
 #----------------------------------------------
 # build and install readline
@@ -19,7 +19,7 @@ cd $TMP_DIR && \
 cd $TMP_DIR && \
  	tar -zxf $DOWNLOADS_DIR/readline-6.2.4.1.tar.gz && \
     cd $TMP_DIR/readline-6.2.4.1 && \
-    python setup.py install
+    $PYTHON_EXECUTABLE setup.py install
 
 #----------------------------------------------
 # build and install boost
@@ -29,7 +29,7 @@ cd $TMP_DIR &&\
     cd $TMP_DIR/boost_1_55_0 &&\
     ./bootstrap.sh \
         --prefix=$BUILD_DIR \
-        --with-python=$BUILD_DIR/bin/python \
+        --with-python=$BUILD_DIR/bin/$PYTHON_EXECUTABLE \
         --with-python-root=$BUILD_DIR && \
     ./bjam -j $BUILD_PROCS \
         -a \
@@ -90,7 +90,7 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/PyOpenGL-3.0.2.tar.gz &&\
     cd $TMP_DIR/PyOpenGL-3.0.2 &&\
-    python setup.py install
+    $PYTHON_EXECUTABLE setup.py install
 
 #----------------------------------------------
 # build and install Qt
@@ -130,9 +130,9 @@ cd $TMP_DIR &&\
     cd build &&\
     cmake .. \
       -DCMAKE_INSTALL_PREFIX=$BUILD_DIR \
-      -DPYTHON_SITE_PACKAGES=$BUILD_DIR/lib/python2.7/site-packages \
+      -DPYTHON_SITE_PACKAGES=$PYTHON_SITE_PACKAGES \
       -DCMAKE_PREFIX_PATH=$BUILD_DIR \
-      -DPYTHON_EXECUTABLE=$BUILD_DIR/bin/python &&\
+      -DPYTHON_EXECUTABLE=$PYTHON_EXECUTABLE &&\
     make VERBOSE=1 -j ${BUILD_PROCS} &&\
     make install &&\
     cd $TMP_DIR/pyside-qt4.8+1.2.2 &&\
@@ -141,9 +141,9 @@ cd $TMP_DIR &&\
     cd build &&\
     cmake .. \
       -DCMAKE_INSTALL_PREFIX=$BUILD_DIR \
-      -DPYTHON_SITE_PACKAGES=$BUILD_DIR/lib/python2.7/site-packages \
+      -DPYTHON_SITE_PACKAGES=$PYTHON_SITE_PACKAGES \
       -DCMAKE_PREFIX_PATH=$BUILD_DIR \
-      -DPYTHON_EXECUTABLE=$BUILD_DIR/bin/python &&\
+      -DPYTHON_EXECUTABLE=$PYTHON_EXECUTABLE &&\
     make VERBOSE=1 -j ${BUILD_PROCS} &&\
     make install &&\
     cd $TMP_DIR/Tools-0.2.15 &&\
@@ -151,9 +151,9 @@ cd $TMP_DIR &&\
     cd build &&\
     cmake .. \
       -DCMAKE_INSTALL_PREFIX=$BUILD_DIR \
-      -DPYTHON_SITE_PACKAGES=$BUILD_DIR/lib/python2.7/site-packages \
+      -DPYTHON_SITE_PACKAGES=$PYTHON_SITE_PACKAGES \
       -DCMAKE_PREFIX_PATH=$BUILD_DIR \
-      -DPYTHON_EXECUTABLE=$BUILD_DIR/bin/python &&\
+      -DPYTHON_EXECUTABLE=$PYTHON_EXECUTABLE &&\
     make -j ${BUILD_PROCS} &&\
     make install
 
@@ -204,7 +204,7 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/numpy-1.9.2.tar.gz &&\
     cd $TMP_DIR/numpy-1.9.2 && \
-    python setup.py install
+    $PYTHON_EXECUTABLE setup.py install
 
 #----------------------------------------------
 # build and install google/double-conversion

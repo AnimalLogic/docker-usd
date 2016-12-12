@@ -6,6 +6,10 @@ FROM usd-docker/base:centos6-7.1
 
 MAINTAINER Aloys Baillet - Animal Logic
 
+ENV PYTHON_SITE_PACKAGES=$BUILD_DIR/lib/python2.7/site-packages
+ENV PYTHON_EXECUTABLE=$BUILD_DIR/bin/python
+ENV PYTHONPATH=$PYTHONPATH:/opt/usd/lib/python:/opt/usd/lib/python/site-packages:/opt/usd/lib64/python/site-packages
+
 COPY scripts/download_vfx.sh /tmp/
 RUN /tmp/download_vfx.sh
 
@@ -14,7 +18,5 @@ RUN /tmp/build_vfx_base.sh
 
 COPY scripts/build_vfx.sh /tmp/
 RUN /tmp/build_vfx.sh
-
-ENV PYTHONPATH=$PYTHONPATH:/opt/usd/lib/python
 
 CMD bash

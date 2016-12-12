@@ -67,7 +67,7 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/MarkupSafe-0.23.tar.gz &&\
     cd $TMP_DIR/MarkupSafe-0.23 && \
-    python setup.py install
+    $PYTHON_EXECUTABLE setup.py install
 
 #----------------------------------------------
 # build and install Jinja2 (USD Dependency)
@@ -75,7 +75,7 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/Jinja2-2.8.tar.gz &&\
     cd $TMP_DIR/Jinja2-2.8 && \
-    python setup.py install
+    $PYTHON_EXECUTABLE setup.py install
 
 #----------------------------------------------
 # build and install pyIlmBase

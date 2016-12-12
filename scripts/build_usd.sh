@@ -16,7 +16,6 @@ cd $TMP_DIR &&\
     cd build && \
     cmake \
       -DCMAKE_INSTALL_PREFIX=$BUILD_DIR \
-      -DPYTHON_SITE_PACKAGES=$BUILD_DIR/lib/python2.7/site-packages \
       -DCMAKE_PREFIX_PATH=$BUILD_DIR \
       -DOPENEXR_LOCATION=$BUILD_DIR \
       -DPTEX_INCLUDE_DIR=$BUILD_DIR/include/ptex \

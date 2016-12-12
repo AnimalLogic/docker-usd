@@ -64,11 +64,11 @@ COPY cert/*.pem /etc/pki/ca-trust/source/anchors/
 RUN update-ca-trust force-enable && \
     update-ca-trust extract
 
-COPY scripts/download_gcc.sh /tmp/
-RUN /tmp/download_gcc.sh
+COPY scripts/download_base.sh /tmp/
+RUN /tmp/download_base.sh
 
-COPY scripts/build_gcc.sh /tmp/
-RUN /tmp/build_gcc.sh
+COPY scripts/build_base.sh /tmp/
+RUN /tmp/build_base.sh
 
 ENV CC=$BUILD_DIR/bin/gcc
 ENV CXX=$BUILD_DIR/bin/g++
