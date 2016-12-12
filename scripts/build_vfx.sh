@@ -69,8 +69,7 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/MarkupSafe-0.23.tar.gz &&\
     cd $TMP_DIR/MarkupSafe-0.23 && \
-    python setup.py build && \
-    python setup.py install --prefix=$BUILD_DIR
+    python setup.py install
 
 #----------------------------------------------
 # build and install Jinja2 (USD Dependency)
@@ -78,8 +77,7 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/Jinja2-2.8.tar.gz &&\
     cd $TMP_DIR/Jinja2-2.8 && \
-    python setup.py build && \
-    python setup.py install --prefix=$BUILD_DIR
+    python setup.py install
 
 #----------------------------------------------
 # build and install pyIlmBase
@@ -135,7 +133,7 @@ cd $TMP_DIR &&\
 cd $TMP_DIR &&\
    tar -zxf $DOWNLOADS_DIR/OpenSubdiv-3_1_0.tar.gz && \
    cd $TMP_DIR/OpenSubdiv-3_1_0 && \
-    cmake \
+    /usr/bin/cmake \
       -DCMAKE_INSTALL_PREFIX=$BUILD_DIR \
       -DTBB_LOCATION=$BUILD_DIR \
       -DPTEX_INCLUDE_DIR=$BUILD_DIR/include \
@@ -144,7 +142,6 @@ cd $TMP_DIR &&\
       -DGLFW_LOCATION=$BUILD_DIR \
       -DGLEW_INCLUDE_DIR=$BUILD_DIR/include \
       -DGLEW_LIBRARY=$BUILD_DIR/lib/libGLEW.so \
-      -DOPENCL_INCLUDE_DIRS=/usr/local/cuda/include \
       -DNO_EXAMPLES=ON \
       -DNO_TUTORIALS=ON && \
     make -j ${BUILD_PROCS} VERBOSE=1 && \
