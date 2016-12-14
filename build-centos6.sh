@@ -5,10 +5,10 @@ set -e
 cp -u /etc/pki/ca-trust/source/anchors/* cert/
 
 # Build base: base centos packages and gcc
-docker build -t "usd-docker/base:centos6-7.1" -f centos6/base/Dockerfile .
+docker build -t "usd-docker/base:centos6-usd-0.7" -f centos6/base/Dockerfile .
 
 # Build VFX packages
-docker build -t "usd-docker/vfx:centos6-7.1" -f centos6/vfx/Dockerfile .
+docker build -t "usd-docker/vfx:centos6-usd-0.7" -f centos6/vfx/Dockerfile .
 
 # Build USD
-docker build -t "usd-docker/usd:centos6-7.1" -f centos6/usd/Dockerfile .
+docker build -t "usd-docker/usd:centos6-usd-0.7.2" -f centos6/usd/Dockerfile .

@@ -36,6 +36,8 @@ If you are on a platform not supported by docker-1.9 (such as CentOS-6) you can
 still build the images but running them is a lot trickier as nvidia-docker is
 not available and you have to manually create the volume containing the NVidia driver.
 
+The builds have been tested on CentOS-6 and Ubuntu-14-10.
+
 ## Credits:
 * For USD: http://openusd.org
 * For Docker: https://www.docker.com/
