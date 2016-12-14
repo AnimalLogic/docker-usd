@@ -4,6 +4,10 @@ In this repository you will find a set of docker build scripts which will
 download all the Open Source packages required to build Pixar's
 Universal Scene Description, as well as USD itself.
 
+If you are running a linux supported by nvidia-docker you can also run usdview
+interactively using the run.sh script, including CUDA acceleration for OpenSubdiv.
+Otherwise you can still use most tools such as usdcat.
+
 The image tagged "usd-docker/vfx:centos7-usd-0.7" will be very similar to a VFX Platform 2016
 except for the Qt version still being at 4.8 as USD doesn't support Qt-5 just yet.
 
@@ -35,6 +39,13 @@ because it might help others when building USD.
 This repository can also help evaluate USD as it makes all USD tools available
 within the docker container, these include usdview (with full GL and CUDA acceleration)
 and usdcat with Alembic support.
+
+## Goals
+The main goal of this work at this stage is technology exploration, it is good to
+see the progress done by docker and nvidia on supporting GPU acceleration in
+containers.
+
+One potential future goal could be to provide standard ways to build VFX Platform packages.
 
 ## Build requirements
 For easiest build you need a recent version of linux with Docker-1.9 and
