@@ -4,8 +4,11 @@ In this repository you will find a set of docker build scripts which will
 download all the Open Source packages required to build Pixar's
 Universal Scene Description, as well as USD itself.
 
-The image tagged "usd-docker/vfx:7.1" will be very similar to a VFX Platform 2016
+The image tagged "usd-docker/vfx:centos7-usd-0.7" will be very similar to a VFX Platform 2016
 except for the Qt version still being at 4.8 as USD doesn't support Qt-5 just yet.
+
+The image tagged "usd-docker/usd:centos7-usd-0.7.2" is built from the vfx one and adds
+USD 0.7.2.
 
 We will not release pre-built images on Docker Hub for now as they are big and
 will contain dozens of OSS packages with very different licenses.
@@ -13,7 +16,7 @@ will contain dozens of OSS packages with very different licenses.
 
 To build locally:
 ```bash
-./build.sh
+./build-centos7.sh
 ```
 
 To run usdview once built:
