@@ -10,12 +10,16 @@ except for the Qt version still being at 4.8 as USD doesn't support Qt-5 just ye
 The image tagged "usd-docker/usd:centos7-usd-0.7.2" is built from the vfx one and adds
 USD 0.7.2.
 
+The centos-6 image takes about one hour to build and creates a 5GB image, the
+centos-7 image is faster to build and is about 4GB.
+
 We will not release pre-built images on Docker Hub for now as they are big and
 will contain dozens of OSS packages with very different licenses.
 
 
 To build locally:
 ```bash
+cd linux
 ./build-centos7.sh
 ```
 
