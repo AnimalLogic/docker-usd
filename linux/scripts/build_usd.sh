@@ -30,5 +30,3 @@ cd $TMP_DIR &&\
       .. && \
     make -j ${BUILD_PROCS} && \
     make install
-
-rm -rf $TMP_DIR
