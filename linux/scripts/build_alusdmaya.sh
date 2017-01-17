@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-#What is this?
 set -e
 
 mkdir -p $TMP_DIR
@@ -26,3 +24,5 @@ cd $TMP_DIR &&\
             ..
     make -j ${BUILD_PROCS}
   make install
+
+rm -rf $TMP_DIR
