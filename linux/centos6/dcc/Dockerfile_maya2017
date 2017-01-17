@@ -1,0 +1,24 @@
+############################################################
+# Dockerfile to build USD on VFX Platform 2016
+# Based on nvidia/cuda:devel-centos6
+
+FROM usd-docker/base:centos6-usd-0.7
+
+MAINTAINER Animal Logic
+
+ENV MAYA_FILENAME Autodesk_Maya_2017_Update1_P01.tgz
+ENV MAYA_DOCKER_PATH  $DOWNLOADS_DIR/$MAYA_FILENAME
+
+ENV MAYA_DEVKIT_FILENAME Maya2017_DEVKIT_Linux.tgz
+ENV MAYA_DEVKIT_DOCKER_PATH $DOWNLOADS_DIR/$MAYA_DEVKIT_FILENAME
+
+ENV MAYA_INSTALL_LOCATION $BUILD_DIR
+ENV MAYA_LOCATION $MAYA_INSTALL_LOCATION/usr/autodesk/maya2017
+
+COPY apps/$MAYA_FILENAME $MAYA_DOCKER_PATH
+COPY apps/$MAYA_DEVKIT_FILENAME $MAYA_DEVKIT_DOCKER_PATH
+
+COPY scripts/build_maya2017.sh /tmp/
+RUN /tmp/build_maya2017.sh
+
+CMD bash

@@ -36,9 +36,6 @@ RUN yum -y install \
     zlib-devel.x86_64 \
     texinfo.x86_64 \
     libXext-devel \
-    cmake \
-    openssl-devel \
-    libXext-devel \
     libXt-devel \
     libicu-devel \
     sqlite-devel \
@@ -57,7 +54,10 @@ RUN yum -y install \
     libXi-devel \
     pulseaudio-libs-devel.x86_64 \
     xorg-x11-fonts-Type1 \
-    ca-certificates
+    ca-certificates \
+    libXpm-devel \
+    libXp-devel \
+    cppunit-devel
 
 COPY cert/*.pem /etc/pki/ca-trust/source/anchors/
 
