@@ -2,9 +2,7 @@
 # Dockerfile to build USD on VFX Platform 2016
 # Based on nvidia/cuda:devel-centos6
 
-#FROM usd-docker/maya2017:centos6-usd-0.7
-asdasd cause build error here.
-FROM usd-docker/base:centos6-usd-0.7 #TODO:BAZ 
+FROM usd-docker/maya2016:centos6-usd-0.7
 
 MAINTAINER Aloys Baillet - Animal Logic
 

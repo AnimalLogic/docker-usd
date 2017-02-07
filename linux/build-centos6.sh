@@ -15,6 +15,3 @@ docker build -t "usd-docker/vfx:centos6-usd-0.7" -f centos6/vfx/Dockerfile .
 
 echo "Build USD"
 docker build -t "usd-docker/usd:centos6-usd-0.7.2" -f centos6/usd/Dockerfile .
-
-echo "Build AL_USDMaya"#TODO: Move to AL_USDMaya
-docker build -t "usd-docker/alusdmaya:centos6-usd-0.7" -f centos6/usd/dependants/Dockerfile .

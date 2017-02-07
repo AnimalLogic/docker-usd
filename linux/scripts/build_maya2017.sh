@@ -7,7 +7,6 @@ mkdir -p $MAYA_INSTALL_LOCATION
 
 #----------------------------------------------
 # Checkout, build and install USD
-# TODO: use a zipped version of AL_USDMaya to have a more consistant run
 #----------------------------------------------
 
 cd $TMP_DIR && \
