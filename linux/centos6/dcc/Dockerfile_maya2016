@@ -1,0 +1,18 @@
+############################################################
+# Dockerfile to install maya2016
+# Based on nvidia/base:centos6-usd-0.7
+
+FROM usd-docker/vfx:centos6-usd-0.7
+
+MAINTAINER Animal Logic
+
+COPY scripts/build_maya2016.sh /tmp/
+
+ENV MAYA_LOCATION=/usr/autodesk/maya
+#install maya and export all the environment variables into the current bash environment
+RUN /bin/bash -c "source /tmp/build_maya2016.sh"
+
+# Cleanup
+CMD bash
+
+ENV MAYA_IMAGE_TAG "usd-docker/maya2016:centos6-usd-0.7"

@@ -19,4 +19,11 @@ cd $MAYA_INSTALL_LOCATION && \
       ln -s $MAYA_LOCATION/bin/maya2017 $MAYA_LOCATION/bin/maya
       cp -R $TMP_DIR/Maya2017devkit/devkitBase/devkit $MAYA_LOCATION
 
+# Make mayapy the default Python
+alias hpython="\"$MAYA_LOCATION/bin/mayapy\"" >> ~/.bashrc
+alias hpip="\"mayapy -m pip\"" >> ~/.bashrc
+
+# Setup environment
+export PATH=$MAYA_LOCATION/bin:$PATH
+
 rm -rf $TMP_DIR

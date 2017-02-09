@@ -7,7 +7,8 @@ mkdir -p $DOWNLOADS_DIR
 wget https://pypi.python.org/packages/source/r/readline/readline-6.2.4.1.tar.gz -P $DOWNLOADS_DIR -nc
 wget http://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.bz2 -P $DOWNLOADS_DIR -nc
 wget http://www.ijg.org/files/jpegsrc.v8c.tar.gz -P $DOWNLOADS_DIR -nc
-wget http://libtiff.maptools.org/dl/tiff-3.8.2.tar.gz -P $DOWNLOADS_DIR -nc
+#wget http://libtiff.maptools.org/dl/tiff-3.8.2.tar.gz -P $DOWNLOADS_DIR -nc
+wget http://pkgs.fedoraproject.org/repo/pkgs/libtiff/tiff-3.8.2.tar.gz/fbb6f446ea4ed18955e2714934e5b698/tiff-3.8.2.tar.gz -P $DOWNLOADS_DIR -nc
 wget http://prdownloads.sourceforge.net/libpng/libpng-1.6.26.tar.gz -P $DOWNLOADS_DIR -nc
 wget http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.gz -P $DOWNLOADS_DIR -nc
 wget https://pypi.python.org/packages/source/P/PyOpenGL/PyOpenGL-3.0.2.tar.gz -P $DOWNLOADS_DIR -nc

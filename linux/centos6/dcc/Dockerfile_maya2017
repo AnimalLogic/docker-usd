@@ -2,7 +2,7 @@
 # Dockerfile to install maya2017
 # Based on nvidia/base:centos6-usd-0.7
 
-FROM usd-docker/base:centos6-usd-0.7
+FROM usd-docker/vfx:centos6-usd-0.7
 
 MAINTAINER Animal Logic
 
@@ -15,10 +15,14 @@ ENV MAYA_DEVKIT_DOCKER_PATH $DOWNLOADS_DIR/$MAYA_DEVKIT_FILENAME
 ENV MAYA_INSTALL_LOCATION $BUILD_DIR
 ENV MAYA_LOCATION $MAYA_INSTALL_LOCATION/usr/autodesk/maya2017
 
-COPY apps/tmp/$MAYA_FILENAME $MAYA_DOCKER_PATH
-COPY apps/tmp/$MAYA_DEVKIT_FILENAME $MAYA_DEVKIT_DOCKER_PATH
+COPY scripts/build_maya2017.sh /tmp/
+
+COPY apps/$MAYA_FILENAME $MAYA_DOCKER_PATH
+COPY apps/$MAYA_DEVKIT_FILENAME $MAYA_DEVKIT_DOCKER_PATH
 
 COPY scripts/build_maya2017.sh /tmp/
 RUN /tmp/build_maya2017.sh
 
 CMD bash
+
+ENV MAYA_IMAGE_TAG "usd-docker/maya2017:centos6-usd-0.7"
