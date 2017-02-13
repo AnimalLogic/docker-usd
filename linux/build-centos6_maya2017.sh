@@ -2,7 +2,7 @@
 set -e
 
 echo "Copy local root certificates for corporate networks"
-cp -u /etc/pki/ca-trust/source/anchors/* cert/
+[ -e /etc/pki/ca-trust/source/anchors ] && cp -u /etc/pki/ca-trust/source/anchors/* cert/
 
 echo "Build base: base centos packages and gcc"
 docker build -t "usd-docker/base:centos6-usd-0.7" -f centos6/base/Dockerfile .
