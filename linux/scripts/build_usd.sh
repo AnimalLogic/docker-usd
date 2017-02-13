@@ -28,11 +28,10 @@ cd $TMP_DIR && \
       -DGLEW_LIBRARY=$BUILD_DIR/lib/libGLEW.so \
       -DPXR_MALLOC_LIBRARY:path=$BUILD_DIR/lib/libjemalloc.so \
       .. && \
-    make -j ${BUILD_PROCS} install && \
+    make -j ${BUILD_PROCS} && \
+    make install && \
    cd - && \
     echo "</Workaround for https://github.com/PixarAnimationStudios/USD/issues/158: Manually installing the following:" && \
     cp pxr/usd/lib/usd/schema.usda $BUILD_DIR/share/usd/plugins/usd/resources && echo "pxr/usd/lib/usd/schema.usda -> $BUILD_DIR/share/usd/plugins/usd/resources" && \
     cp -R pxr/usd/lib/usd/codegenTemplates $BUILD_DIR/bin/codegenTemplates && echo "pxr/usd/lib/usd/codegenTemplates-> $BUILD_DIR/bin/codegenTemplates" && \
     echo "Workaround/>"
-
-rm -rf $TMP_DIR
