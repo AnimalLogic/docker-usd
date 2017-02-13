@@ -29,5 +29,3 @@ CMD mv $MAYA_LOCATION/lib/libOpenColorIO.so.1 $MAYA_LOCATION/lib/libOpenColorIO.
 
 # Cleanup
 CMD bash
-
-ENV MAYA_IMAGE_TAG "usd-docker/maya2016:centos6-usd-0.7"

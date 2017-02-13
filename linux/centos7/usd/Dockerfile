@@ -2,7 +2,7 @@
 # Dockerfile to build USD on VFX Platform 2016
 # Based on nvidia/cuda:devel-centos6
 
-FROM usd-docker/vfx-maya2017:centos7-usd-0.7
+FROM usd-docker/vfx:centos7-usd-0.7
 
 MAINTAINER Aloys Baillet - Animal Logic
 
