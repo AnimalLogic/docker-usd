@@ -23,6 +23,17 @@ COPY apps/$MAYA_DEVKIT_FILENAME $MAYA_DEVKIT_DOCKER_PATH
 COPY scripts/build_maya2017.sh /tmp/
 RUN /tmp/build_maya2017.sh
 
+# Make mayapy the default Python
+RUN echo alias hpython="\"$MAYA_LOCATION/bin/mayapy\"" >> ~/.bashrc && \
+    echo alias hpip="\"mayapy -m pip\"" >> ~/.bashrc
+
+# Setup environment
+ENV PATH=$MAYA_LOCATION/bin:$PATH
+
+# Workaround for "Segmentation fault (core dumped)"
+# See https://forums.autodesk.com/t5/maya-general/render-crash-on-linux/m-p/5608552/highlight/true
+ENV MAYA_DISABLE_CIP=1
+
 CMD bash
 
 ENV MAYA_IMAGE_TAG "usd-docker/maya2017:centos6-usd-0.7"

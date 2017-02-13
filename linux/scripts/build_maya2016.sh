@@ -11,17 +11,6 @@ rm maya.tgz
 rpm -Uvh /maya/Maya*.rpm
 rm -r /maya
 
-# Make mayapy the default Python
-alias hpython="$MAYA_LOCATION\"/bin/mayapy\"" >> ~/.bashrc
-alias hpip="\"mayapy -m pip\"" >> ~/.bashrc
-
-# Setup environment
-export PATH=$MAYA_LOCATION/bin:$PATH
-
-# Workaround for "Segmentation fault (core dumped)"
-# See https://forums.autodesk.com/t5/maya-general/render-crash-on-linux/m-p/5608552/highlight/true
-export MAYA_DISABLE_CIP=1
-
 # Checkout the devkit from github.
 git clone https://github.com/autodesk-adn/Maya-devkit
 cp -R Maya-devkit/linux/devkit/. $MAYA_LOCATION/

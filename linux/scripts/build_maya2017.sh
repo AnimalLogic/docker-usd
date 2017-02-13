@@ -23,7 +23,4 @@ cd $MAYA_INSTALL_LOCATION && \
 alias hpython="\"$MAYA_LOCATION/bin/mayapy\"" >> ~/.bashrc
 alias hpip="\"mayapy -m pip\"" >> ~/.bashrc
 
-# Setup environment
-export PATH=$MAYA_LOCATION/bin:$PATH
-
 rm -rf $TMP_DIR
