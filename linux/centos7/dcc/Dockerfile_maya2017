@@ -1,8 +1,8 @@
 ############################################################
 # Dockerfile to install maya2017
-# Based on nvidia/base:centos6-usd-0.7
+# Based on nvidia/base:centos7-usd-0.7
 
-FROM usd-docker/vfx:centos6-usd-0.7
+FROM usd-docker/vfx:centos7-usd-0.7
 
 MAINTAINER Animal Logic
 
@@ -35,5 +35,3 @@ ENV PATH=$MAYA_LOCATION/bin:$PATH
 ENV MAYA_DISABLE_CIP=1
 
 CMD bash
-
-ENV MAYA_IMAGE_TAG "usd-docker/maya2017:centos6-usd-0.7"
