@@ -6,12 +6,13 @@ FROM usd-docker/vfx:centos7-usd-0.7
 
 MAINTAINER Aloys Baillet - Animal Logic
 
-LABEL pxr.usd.version="0.7.2"
+ENV USD_VERSION "0.7.4"
+LABEL pxr.usd.version="${USD_VERSION}"
 
 COPY scripts/build_usd.sh /tmp/
 RUN /tmp/build_usd.sh
 
-RUN cd $TMP_DIR/USD-0.7.2/build && \
+RUN cd $TMP_DIR/USD-${USD_VERSION}/build && \
     ctest
 
 CMD bash

@@ -14,4 +14,4 @@ echo "Build Maya2016"
 docker build -t "usd-docker/maya2016:centos7-usd-0.7" -f centos7/dcc/Dockerfile_maya2016 .
 
 echo "Build USD"
-docker build -t "usd-docker/usd:centos7-usd-0.7.2" -f centos7/usd/Dockerfile_maya2016 .
+docker build -t "usd-docker/usd:centos7-usd-0.7.4" -f centos7/usd/Dockerfile_maya2016 .
