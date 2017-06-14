@@ -7,11 +7,11 @@ mkdir -p $TMP_DIR
 #----------------------------------------------
 # build and install USD
 #----------------------------------------------
-wget https://github.com/PixarAnimationStudios/USD/archive/v0.7.2.tar.gz -O $DOWNLOADS_DIR/USD-0.7.2.tar.gz -nc
+wget https://github.com/PixarAnimationStudios/USD/archive/v0.7.5.tar.gz -O $DOWNLOADS_DIR/USD-0.7.5.tar.gz -nc
 
 cd $TMP_DIR && \
-   tar -zxf $DOWNLOADS_DIR/USD-0.7.2.tar.gz && \
-   cd $TMP_DIR/USD-0.7.2 && \
+   tar -zxf $DOWNLOADS_DIR/USD-0.7.5.tar.gz && \
+   cd $TMP_DIR/USD-0.7.5 && \
     mkdir build && \
     cd build && \
     cmake \
