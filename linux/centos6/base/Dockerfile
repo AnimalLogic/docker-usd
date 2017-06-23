@@ -57,7 +57,8 @@ RUN yum -y install \
     ca-certificates \
     libXpm-devel \
     libXp-devel \
-    cppunit-devel
+    cppunit-devel \
+    tcsh
 
 COPY cert/*.pem /etc/pki/ca-trust/source/anchors/
 
