@@ -22,4 +22,4 @@ else
 fi
 
 echo "Build USD"
-docker build -t "usd-docker/usd:centos6-usd-0.7.4" -f centos6/usd/Dockerfile_maya2017 .
+docker build -t "usd-docker/usd:centos6-usd-0.7.5" -f centos6/usd/Dockerfile_maya2017 .

@@ -6,7 +6,7 @@ FROM usd-docker/vfx:centos7-usd-0.7
 
 MAINTAINER Aloys Baillet - Animal Logic
 
-ENV USD_VERSION "0.7.4"
+ENV USD_VERSION "0.7.5"
 LABEL pxr.usd.version="${USD_VERSION}"
 
 COPY scripts/build_usd.sh /tmp/
