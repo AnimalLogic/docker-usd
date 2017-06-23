@@ -47,4 +47,16 @@ cd $TMP_DIR && \
     make -j $BUILD_PROCS && \
     make install
 
+#----------------------------------------------
+# build and install GOOGLETEST
+#----------------------------------------------
+cd $TMP_DIR
+    git clone https://github.com/google/googletest.git
+    mkdir build_gtest
+    cd build_gtest
+    cmake -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$BUILD_DIR ../googletest
+    make -j$BUILD_PROCS install
+    cd ..
+    rm -rf build_gtest googletest
+
 rm -rf $TMP_DIR
