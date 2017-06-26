@@ -20,7 +20,6 @@ COPY scripts/build_maya2017.sh /tmp/
 COPY apps/$MAYA_FILENAME $MAYA_DOCKER_PATH
 COPY apps/$MAYA_DEVKIT_FILENAME $MAYA_DEVKIT_DOCKER_PATH
 
-COPY scripts/build_maya2017.sh /tmp/
 RUN /tmp/build_maya2017.sh
 
 # Make mayapy the default Python
