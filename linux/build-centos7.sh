@@ -11,4 +11,4 @@ echo "Build VFX packages"
 docker build -t "usd-docker/vfx:centos7-usd-0.7" -f centos7/vfx/Dockerfile .
 
 echo "Build USD"
-docker build -t "usd-docker/usd:centos7-usd-0.7.4" -f centos7/usd/Dockerfile .
+docker build -t "usd-docker/usd:centos7-usd-0.7.5" -f centos7/usd/Dockerfile .
