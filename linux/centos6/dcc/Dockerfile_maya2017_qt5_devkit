@@ -1,0 +1,11 @@
+############################################################
+# Dockerfile to install maya2017
+# Based on nvidia/base:centos6-usd-0.7
+
+FROM usd-docker/maya2017:centos6-usd-0.7
+
+MAINTAINER Animal Logic
+
+COPY scripts/build_maya2017_qt5_devkit.sh /tmp/
+
+RUN /tmp/build_maya2017_qt5_devkit.sh
