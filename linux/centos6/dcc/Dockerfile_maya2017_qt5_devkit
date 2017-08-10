@@ -1,10 +1,9 @@
 ############################################################
-# Dockerfile to install maya2017
-# Based on nvidia/base:centos6-usd-0.7
+# Dockerfile to install maya2017's QT5
 
 FROM usd-docker/maya2017:centos6-usd-0.7
 
-MAINTAINER Animal Logic
+LABEL maya2017.qt5.version="1" maintainer="Animal Logic"
 
 COPY scripts/build_maya2017_qt5_devkit.sh /tmp/
 
