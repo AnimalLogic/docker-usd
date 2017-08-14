@@ -30,8 +30,4 @@ cd $TMP_DIR && \
       .. && \
     make -j ${BUILD_PROCS} && \
     make install && \
-   cd - && \
-    echo "</Workaround for https://github.com/PixarAnimationStudios/USD/issues/158: Manually installing the following:" && \
-    cp pxr/usd/lib/usd/schema.usda $BUILD_DIR/share/usd/plugins/usd/resources && echo "pxr/usd/lib/usd/schema.usda -> $BUILD_DIR/share/usd/plugins/usd/resources" && \
-    cp -R pxr/usd/lib/usd/codegenTemplates $BUILD_DIR/bin/codegenTemplates && echo "pxr/usd/lib/usd/codegenTemplates-> $BUILD_DIR/bin/codegenTemplates" && \
-    echo "Workaround/>"
+   cd -
