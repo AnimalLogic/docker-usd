@@ -4,19 +4,19 @@
 
 FROM nvidia/cuda:7.5-devel-centos6
 
-MAINTAINER Aloys Baillet - Animal Logic
+LABEL base.version="1" maintainer="Aloys Baillet - Animal Logic"
 
-ENV BUILD_PROCS 7
-ENV BUILD_DIR /opt/usd
-ENV TMP_DIR /tmp/usd-build
-ENV DOWNLOADS_DIR /tmp/usd-downloads
+ENV BUILD_PROCS=16 \
+    BUILD_DIR=/opt/usd \
+    TMP_DIR=/tmp/usd-build \
+    DOWNLOADS_DIR=/tmp/usd-downloads
 
-ENV PATH $BUILD_DIR/bin:$PATH
-ENV PKG_CONFIG_PATH=$BUILD_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
-ENV LD_LIBRARY_PATH=$BUILD_DIR/lib64:$BUILD_DIR/lib:$LD_LIBRARY_PATH
+ENV PATH=$BUILD_DIR/bin:$PATH \
+    PKG_CONFIG_PATH=$BUILD_DIR/lib/pkgconfig:$PKG_CONFIG_PATH \
+    LD_LIBRARY_PATH=$BUILD_DIR/lib64:$BUILD_DIR/lib:$LD_LIBRARY_PATH
 
-RUN yum -y groupinstall "Development Tools"
-RUN yum -y install \
+RUN yum -y groupinstall "Development Tools" \
+    && yum -y install \
     wget \
     cmake \
     openssl-devel \
@@ -58,20 +58,18 @@ RUN yum -y install \
     libXpm-devel \
     libXp-devel \
     cppunit-devel \
-    tcsh
+    tcsh \
+    && yum clean all
 
 COPY cert/*.pem /etc/pki/ca-trust/source/anchors/
+COPY scripts/build_base.sh scripts/download_base.sh /tmp/
 
 RUN update-ca-trust force-enable && \
-    update-ca-trust extract
+    update-ca-trust extract && \
+    /tmp/download_base.sh && \
+    /tmp/build_base.sh
 
-COPY scripts/download_base.sh /tmp/
-RUN /tmp/download_base.sh
-
-COPY scripts/build_base.sh /tmp/
-RUN /tmp/build_base.sh
-
-ENV CC=$BUILD_DIR/bin/gcc
-ENV CXX=$BUILD_DIR/bin/g++
+ENV CC=$BUILD_DIR/bin/gcc  \
+    CXX=$BUILD_DIR/bin/g++
 
 CMD bash

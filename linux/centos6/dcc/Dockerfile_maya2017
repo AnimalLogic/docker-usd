@@ -2,35 +2,25 @@
 # Dockerfile to install maya2017
 # Based on nvidia/base:centos6-usd-0.7
 
-FROM usd-docker/vfx:centos6-usd-0.7
+FROM usd-docker/vfx:latest-centos6
 
-MAINTAINER Animal Logic
+LABEL maya.version="2017.1" maintainer="Animal Logic"
 
-ENV MAYA_FILENAME Autodesk_Maya_2017_Update1_P01.tgz
-ENV MAYA_DOCKER_PATH  $DOWNLOADS_DIR/$MAYA_FILENAME
-
-ENV MAYA_DEVKIT_FILENAME Maya2017_DEVKIT_Linux.tgz
-ENV MAYA_DEVKIT_DOCKER_PATH $DOWNLOADS_DIR/$MAYA_DEVKIT_FILENAME
-
-ENV MAYA_INSTALL_LOCATION $BUILD_DIR
-ENV MAYA_LOCATION $MAYA_INSTALL_LOCATION/usr/autodesk/maya2017
+ENV MAYA_INSTALL_LOCATION=$BUILD_DIR \
+    MAYA_LOCATION=$MAYA_INSTALL_LOCATION/usr/autodesk/maya2017 \
+    DOMAINNAME=localhost
 
 COPY scripts/build_maya2017.sh /tmp/
 
-COPY apps/$MAYA_FILENAME $MAYA_DOCKER_PATH
-COPY apps/$MAYA_DEVKIT_FILENAME $MAYA_DEVKIT_DOCKER_PATH
-
-RUN /tmp/build_maya2017.sh
-
-# Make mayapy the default Python
-RUN echo alias hpython="\"$MAYA_LOCATION/bin/mayapy\"" >> ~/.bashrc && \
-    echo alias hpip="\"mayapy -m pip\"" >> ~/.bashrc
+RUN /tmp/build_maya2017.sh \
+    && echo alias hpython="\"$MAYA_LOCATION/bin/mayapy\"" >> ~/.bashrc \
+    && echo alias hpip="\"mayapy -m pip\"" >> ~/.bashrc
 
 # Setup environment
-ENV PATH=$MAYA_LOCATION/bin:$PATH
-
 # Workaround for "Segmentation fault (core dumped)"
 # See https://forums.autodesk.com/t5/maya-general/render-crash-on-linux/m-p/5608552/highlight/true
-ENV MAYA_DISABLE_CIP=1
+
+ENV PATH=$MAYA_LOCATION/bin:$PATH \
+    MAYA_DISABLE_CIP=1
 
 CMD bash
