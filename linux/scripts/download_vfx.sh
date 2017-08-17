@@ -12,7 +12,7 @@ function getFileWithFallback() {
   local filepath="$1"
   local wgetPath="$2"
   local renamedTarget="$3"
-  wget -q http://${DOMAINNAME}:8000/${filepath} -P "$DOWNLOADS_DIR" ||
+  wget -q http://${HTTP_HOSTNAME}:8000/${filepath} -P "$DOWNLOADS_DIR" ||
   if [[ $? -ne 0 ]]; then
     if [ ! -z "$renamedTarget" ]; then
       wget $wgetPath -P "$DOWNLOADS_DIR" -O "$DOWNLOADS_DIR/$renamedTarget" -nc

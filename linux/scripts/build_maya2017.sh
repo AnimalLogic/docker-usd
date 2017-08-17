@@ -12,8 +12,8 @@ mkdir -p $MAYA_INSTALL_LOCATION
 cd $TMP_DIR && \
     mkdir Maya2017devkit && \
     cd Maya2017devkit && \
-      wget http://${DOMAINNAME}:8000/Autodesk_Maya_2017_Update1_P01.tgz -P "$DOWNLOADS_DIR" && \
-      wget http://${DOMAINNAME}:8000/Maya2017_DEVKIT_Linux.tgz -P "$DOWNLOADS_DIR" && \
+      wget http://${HTTP_HOSTNAME}:8000/Autodesk_Maya_2017_Update1_P01.tgz -P "$DOWNLOADS_DIR" && \
+      wget http://${HTTP_HOSTNAME}:8000/Maya2017_DEVKIT_Linux.tgz -P "$DOWNLOADS_DIR" && \
       tar -xvzf $DOWNLOADS_DIR/Autodesk_Maya_2017_Update1_P01.tgz && \
       tar xf $DOWNLOADS_DIR/Maya2017_DEVKIT_Linux.tgz
 cd / && \
