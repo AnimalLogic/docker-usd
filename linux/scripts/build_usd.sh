@@ -15,8 +15,9 @@ cd $TMP_DIR && \
     mkdir build && \
     cd build && \
     cmake \
-      -DCMAKE_INSTALL_PREFIX=$BUILD_DIR \
+      -DCMAKE_INSTALL_PREFIX=$BUILD_DIR/usd/${USD_VERSION} \
       -DCMAKE_PREFIX_PATH=$BUILD_DIR \
+      -DPXR_BUILD_TESTS=OFF \
       -DOPENEXR_LOCATION=$BUILD_DIR \
       -DPTEX_INCLUDE_DIR=$BUILD_DIR/include/ptex \
       -DOIIO_BASE_DIR=$BUILD_DIR \
@@ -30,4 +31,23 @@ cd $TMP_DIR && \
       .. && \
     make -j ${BUILD_PROCS} && \
     make install && \
-   cd -
+    # Build and install usd with PXR_MAYA_TBB_BUG_WORKAROUND activated
+    cmake \
+      -DCMAKE_INSTALL_PREFIX=$BUILD_DIR/usd/${USD_VERSION}-maya-tbb-workaround \
+      -DCMAKE_PREFIX_PATH=$BUILD_DIR \
+      -DPXR_BUILD_TESTS=OFF \
+      -DPXR_MAYA_TBB_BUG_WORKAROUND=ON \
+      -DOPENEXR_LOCATION=$BUILD_DIR \
+      -DPTEX_INCLUDE_DIR=$BUILD_DIR/include/ptex \
+      -DOIIO_BASE_DIR=$BUILD_DIR \
+      -DOPENSUBDIV_ROOT_DIR=$BUILD_DIR \
+      -DDOUBLE_CONVERSION_INCLUDE_DIR=$BUILD_DIR/include \
+      -DDOUBLE_CONVERSION_LIBRARY=$BUILD_DIR/lib/libdouble-conversion.so \
+      -DPTEX_LIBRARY=$BUILD_DIR/lib/libPtex.so \
+      -DGLEW_INCLUDE_DIR=$BUILD_DIR/include/GL \
+      -DGLEW_LIBRARY=$BUILD_DIR/lib/libGLEW.so \
+      -DPXR_MALLOC_LIBRARY:path=$BUILD_DIR/lib/libjemalloc.so \
+      .. && \
+    make -j ${BUILD_PROCS} && \
+    make install && \
+  cd -
