@@ -10,9 +10,7 @@ LABEL maya.version="2016.1" maintainer="Animal Logic"
 # Setup environment
 # Workaround for "Segmentation fault (core dumped)"
 # See https://forums.autodesk.com/t5/maya-general/render-crash-on-linux/m-p/5608552/highlight/true
-ENV MAYA_LOCATION=/usr/autodesk/maya \
-    PATH=$MAYA_LOCATION/bin:$PATH \
-    MAYA_DISABLE_CIP=1
+ENV MAYA_LOCATION=/usr/autodesk/maya
 
 COPY scripts/build_maya2016.sh /tmp/
 
@@ -20,3 +18,6 @@ COPY scripts/build_maya2016.sh /tmp/
 RUN /tmp/build_maya2016.sh \
     && echo alias hpython="\"$MAYA_LOCATION/bin/mayapy\"" >> ~/.bashrc \
     && echo alias hpip="\"mayapy -m pip\"" >> ~/.bashrc 
+
+ENV PATH=$MAYA_LOCATION/bin:$PATH \
+    MAYA_DISABLE_CIP=1

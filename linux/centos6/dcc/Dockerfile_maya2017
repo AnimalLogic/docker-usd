@@ -22,5 +22,3 @@ RUN /tmp/build_maya2017.sh \
 
 ENV PATH=$MAYA_LOCATION/bin:$PATH \
     MAYA_DISABLE_CIP=1
-
-CMD bash
