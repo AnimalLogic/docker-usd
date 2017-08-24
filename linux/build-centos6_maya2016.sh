@@ -7,7 +7,8 @@ echo "Copy local root certificates for corporate networks"
 
 # Start a local server to serve files needed during the build.
 cd $1 && python -m SimpleHTTPServer && cd - &
-httpServerPID=$!
+
+httpServerPID=$(ps -ef | grep SimpleHTTPServer | grep -v grep | awk '{print $2}')
 function finish {
   kill $httpServerPID
 }

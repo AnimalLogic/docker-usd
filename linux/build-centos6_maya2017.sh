@@ -22,11 +22,12 @@ echo "Copy local root certificates for corporate networks"
 # Start a local server to serve files needed during the build.
 cd $1 && python -m SimpleHTTPServer && cd - &
 
-httpServerPID=$!
+httpServerPID=$(ps -ef | grep SimpleHTTPServer | grep -v grep | awk '{print $2}')
 function finish {
   kill $httpServerPID
 }
 trap finish EXIT
+
 
 echo "Build base: base centos packages and gcc"
 docker build -t "usd-docker/base:1-centos6" -f centos6/base/Dockerfile .
