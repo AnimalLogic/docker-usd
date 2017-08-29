@@ -11,6 +11,11 @@ rm maya.tgz
 rpm -Uvh /maya/Maya*.rpm
 rm -r /maya
 
+# ATM maya's version of OCIO library (libOpenColorIO.so) will override the used to build
+# oiio (used by USD). This will prevent AL_USDMaya to load.
+# As OCIO is not mandatory to run maya batch, remove it as a workaround for now.
+rm /usr/autodesk/maya/lib/libOpenColorIO.so.1*
+
 # Checkout the devkit from github.
 echo "This takes awhile..."
 git clone --progress https://github.com/autodesk-adn/Maya-devkit
