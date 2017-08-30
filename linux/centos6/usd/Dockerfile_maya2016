@@ -6,5 +6,5 @@ FROM usd-docker/maya2016:latest-centos6
 
 ENV USD_VERSION "0.8.0"
 LABEL pxr.usd.version="${USD_VERSION}" maintainer="Aloys.Baillet - Animal Logic"
-COPY scripts/build_usd.sh /tmp/
-RUN /tmp/build_usd.sh
+COPY scripts/build_usd_maya_tbb_workaround.sh /tmp/
+RUN /tmp/build_usd_maya_tbb_workaround.sh

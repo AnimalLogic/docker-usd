@@ -14,10 +14,12 @@ cd $TMP_DIR && \
    cd $TMP_DIR/USD-${USD_VERSION} && \
     mkdir build && \
     cd build && \
+    # Build and install usd with PXR_MAYA_TBB_BUG_WORKAROUND activated
     cmake \
       -DCMAKE_INSTALL_PREFIX=$BUILD_DIR/usd/${USD_VERSION} \
       -DCMAKE_PREFIX_PATH=$BUILD_DIR \
       -DPXR_BUILD_TESTS=OFF \
+      -DPXR_MAYA_TBB_BUG_WORKAROUND=ON \
       -DOPENEXR_LOCATION=$BUILD_DIR \
       -DPTEX_INCLUDE_DIR=$BUILD_DIR/include/ptex \
       -DOIIO_BASE_DIR=$BUILD_DIR \
