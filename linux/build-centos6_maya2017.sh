@@ -2,12 +2,12 @@
 
 set -e
 if [ -z "$1" ]; then
-  echo "Please pass a path to a folder that contains Autodesk_Maya_2017_Update1_P01.tgz and Maya2017_DEVKIT_Linux.tgz"
+  echo "Please pass a path to a folder that contains Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz and Maya2017_DEVKIT_Linux.tgz"
   exit 1
 fi
 
-if [ ! -f "$1/Autodesk_Maya_2017_Update1_P01.tgz" ]; then
-  echo "Couldn't find file $1/Autodesk_Maya_2017_Update1_P01.tgz"
+if [ ! -f "$1/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz" ]; then
+  echo "Couldn't find file $1/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz"
   exit 1
 fi
 

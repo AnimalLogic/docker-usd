@@ -1,15 +1,9 @@
 ############################################################
-# Dockerfile to build USD on VFX Platform 2016
-# Based on nvidia/cuda:devel-centos6
+# Dockerfile to build USD Maya
 
-FROM usd-docker/maya2017:centos7-usd-0.7
+FROM usd-docker/maya2017:latest-centos7
 
-MAINTAINER Aloys Baillet - Animal Logic
-
-ENV USD_VERSION "0.7.5"
-LABEL pxr.usd.version="${USD_VERSION}"
-
+ENV USD_VERSION "0.8.0"
+LABEL pxr.usd.version="${USD_VERSION}" maintainer="Aloys.Baillet - Animal Logic"
 COPY scripts/build_usd.sh /tmp/
 RUN /tmp/build_usd.sh
-
-CMD bash

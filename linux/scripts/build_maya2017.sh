@@ -12,14 +12,14 @@ mkdir -p $MAYA_INSTALL_LOCATION
 cd $TMP_DIR && \
     mkdir Maya2017devkit && \
     cd Maya2017devkit && \
-      wget http://${HTTP_HOSTNAME}:8000/Autodesk_Maya_2017_Update1_P01.tgz -P "$DOWNLOADS_DIR" && \
-      wget http://${HTTP_HOSTNAME}:8000/Maya2017_DEVKIT_Linux.tgz -P "$DOWNLOADS_DIR" && \
-      tar -xvzf $DOWNLOADS_DIR/Autodesk_Maya_2017_Update1_P01.tgz && \
-      tar xf $DOWNLOADS_DIR/Maya2017_DEVKIT_Linux.tgz
+      wget http://${HTTP_HOSTNAME}:8000/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz -P "$DOWNLOADS_DIR" && \
+      wget http://${HTTP_HOSTNAME}:8000/Maya2017_Update3_DEVKIT_Linux.tgz -P "$DOWNLOADS_DIR" && \
+      tar -xvzf $DOWNLOADS_DIR/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz && \
+      tar xf $DOWNLOADS_DIR/Maya2017_Update3_DEVKIT_Linux.tgz
 cd / && \
-      rpm2cpio $TMP_DIR/Maya2017devkit/Maya2017_64-2017.0-28.x86_64.rpm | cpio -idmv && \
+      rpm2cpio $TMP_DIR/Maya2017devkit/Maya2017_64-2017.0-2743.x86_64.rpm | cpio -idmv && \
       ln -s $MAYA_LOCATION/bin/maya2017 $MAYA_LOCATION/bin/maya && \
-      cp -R $TMP_DIR/Maya2017devkit/devkitBase/devkit $MAYA_LOCATION 
+      cp -R $TMP_DIR/Maya2017devkit/devkitBase/devkit $MAYA_LOCATION
 
 # Make mayapy the default Python
 alias hpython="\"$MAYA_LOCATION/bin/mayapy\"" >> ~/.bashrc
