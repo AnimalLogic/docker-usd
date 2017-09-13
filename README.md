@@ -56,6 +56,11 @@ not available and you have to manually create the volume containing the NVidia d
 
 The builds have been tested on CentOS-6 and Ubuntu-14-10.
 
+### Maya images
+We provide a few Dockerfiles that rely on having a maya devkit tarball available. Unfortunately the recent devkit are not accessible without Autodesk accounts which means we cannot provide automatic downloads for these.
+
+We have tried to simplify the process by allowing you to download the tarballs and place them in a `apps` folder and they will be fed to the build via a temporary python http server... this is not for the feint of heart and will require a few manual updates to the Dockerfile_maya* files. We would like to improve this in the future by "configuring" the Dockerfiles for specific targets depending on which builds are required.
+
 ## Credits:
 * For USD: http://openusd.org
 * For Docker: https://www.docker.com/
