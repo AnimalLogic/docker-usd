@@ -1,4 +1,4 @@
-# USD in a Docker Container!
+# USD in a Docker Container
 
 In this repository you will find a set of docker build scripts which will
 download all the Open Source packages required to build Pixar's
@@ -8,11 +8,11 @@ If you are running a linux supported by nvidia-docker you can also run usdview
 interactively using the run.sh script, including CUDA acceleration for OpenSubdiv.
 Otherwise you can still use most tools such as usdcat.
 
-The image tagged "usd-docker/vfx:centos7-usd-0.7" will be very similar to a VFX Platform 2016
-except for the Qt version still being at 4.8 as USD doesn't support Qt-5 just yet.
+The image tagged "usd-docker/vfx:centos7-usd-0.8" will be very similar to a VFX Platform 2016
+except for the Qt version still being at 4.8 as USD doesn't support Qt-5 and PySide-2 just yet.
 
-The image tagged "usd-docker/usd:centos7-usd-0.7.2" is built from the vfx one and adds
-USD 0.7.2.
+The image tagged "usd-docker/usd:centos7-usd-0.8" is built from the vfx one and adds
+USD 0.8.
 
 The centos-6 image takes about one hour to build and creates a 5GB image, the
 centos-7 image is faster to build and is about 4GB.
@@ -33,7 +33,7 @@ To run usdview once built:
 ```
 
 ## Roadmap
-At this stage this repository is just a prototype and we are sharing it
+At this stage this repository is used to test our AL_USDMaya plugin in a Animal Logic independent way and we are sharing it
 because it might help others when building USD.
 
 This repository can also help evaluate USD as it makes all USD tools available
@@ -41,8 +41,8 @@ within the docker container, these include usdview (with full GL and CUDA accele
 and usdcat with Alembic support.
 
 ## Goals
-The main goal of this work at this stage is technology exploration, it is good to
-see the progress done by docker and nvidia on supporting GPU acceleration in
+The main goal of this work is to ensure correct builds and automated tests of our AL_USDMaya plugin, as well as being
+a technology exploration, it is good to see the progress done by docker and nvidia on supporting GPU acceleration in
 containers.
 
 One potential future goal could be to provide standard ways to build VFX Platform packages.
