@@ -6,9 +6,11 @@ FROM usd-docker/vfx:latest-centos7
 
 LABEL maya.version="2017.4" maintainer="Animal Logic"
 
+ARG current_host_ip_address
+
 ENV MAYA_INSTALL_LOCATION=$BUILD_DIR \
-    MAYA_LOCATION=$MAYA_INSTALL_LOCATION/usr/autodesk/maya2017
-ENV HTTP_HOSTNAME=_YOUR_HOST_IP_ADRESS_HERE_
+    MAYA_LOCATION=$MAYA_INSTALL_LOCATION/usr/autodesk/maya2017 \
+    HTTP_HOSTNAME=$current_host_ip_address
 
 COPY scripts/build_maya2017.sh /tmp/
 

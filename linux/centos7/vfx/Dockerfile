@@ -6,17 +6,16 @@ FROM usd-docker/base:centos7-usd-0.7
 
 MAINTAINER Aloys Baillet - Animal Logic
 
-ENV PYTHON_SITE_PACKAGES=/usr/lib64/python2.7/site-packages
-ENV PYTHON_EXECUTABLE=/usr/bin/python
-ENV PYTHONPATH=$PYTHONPATH:$BUILD_DIR/lib/python:$BUILD_DIR/lib/python/site-packages:$BUILD_DIR/lib64/python2.7/site-packages
+ARG current_host_ip_address
 
-COPY scripts/download_vfx.sh /tmp/
-RUN /tmp/download_vfx.sh
+ENV PYTHON_SITE_PACKAGES=$BUILD_DIR/lib/python2.7/site-packages \
+    PYTHON_EXECUTABLE=python \
+    PYTHONPATH=$PYTHONPATH:/opt/usd/lib/python:/opt/usd/lib/python/site-packages:/opt/usd/lib64/python/site-packages \
+    HTTP_HOSTNAME=$current_host_ip_address
 
-COPY scripts/build_vfx_base.sh /tmp/
-RUN /tmp/build_vfx_base.sh
+COPY scripts/build_vfx.sh scripts/build_vfx_base.sh scripts/download_vfx.sh /tmp/
 
-COPY scripts/build_vfx.sh /tmp/
-RUN /tmp/build_vfx.sh
-
-CMD bash
+RUN /tmp/download_vfx.sh && \
+    /tmp/build_vfx_base.sh && \
+    /tmp/build_vfx.sh && \
+    rm -Rf $DOWNLOADS_DIR/*

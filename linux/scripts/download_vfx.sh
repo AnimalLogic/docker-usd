@@ -8,23 +8,25 @@ function getFileWithFallback() {
   # $1 local path to the file on the HTTP server
   # $2 path which will be used in the wget call if the file couldn't be found in the local HTTP server
   # $3 the name that the file will be written out as once pulled from wget
- 
+
   local filepath="$1"
   local wgetPath="$2"
   local renamedTarget="$3"
-  wget -q http://${HTTP_HOSTNAME}:8000/${filepath} -P "$DOWNLOADS_DIR" ||
-  if [[ $? -ne 0 ]]; then
-    if [ ! -z "$renamedTarget" ]; then
-      wget $wgetPath -P "$DOWNLOADS_DIR" -O "$DOWNLOADS_DIR/$renamedTarget" -nc
-      if [[ $? -ne 0 ]]; then
-        echo "Failed to get file $wgetPath and rename to '$DOWNLOADS_DIR/$renamedTarget'"
-        exit 1
-      fi
-    else
-      wget $wgetPath -P "$DOWNLOADS_DIR" -nc
-      if [[ $? -ne 0 ]]; then
-        echo "Failed to get file $wgetPath"
-        exit 1
+  if [ ! -f $DOWNLOADS_DIR/$renamedTarget ]; then
+    wget -q http://${HTTP_HOSTNAME}:8000/${filepath} -P "$DOWNLOADS_DIR" ||
+    if [[ $? -ne 0 ]]; then
+      if [ ! -z "$renamedTarget" ]; then
+        wget $wgetPath -P "$DOWNLOADS_DIR" -O "$DOWNLOADS_DIR/$renamedTarget" -nc
+        if [[ $? -ne 0 ]]; then
+          echo "Failed to get file $wgetPath and rename to '$DOWNLOADS_DIR/$renamedTarget'"
+          exit 1
+        fi
+      else
+        wget $wgetPath -P "$DOWNLOADS_DIR" -nc
+        if [[ $? -ne 0 ]]; then
+          echo "Failed to get file $wgetPath"
+          exit 1
+        fi
       fi
     fi
   fi
@@ -76,7 +78,7 @@ getFileWithFallback OpenColorIO-1.0.9.tar.gz \
 
 getFileWithFallback OpenColorIO-Configs-1.0_r2.tar.gz \
   http://github.com/imageworks/OpenColorIO-Configs/archive/v1.0_r2.tar.gz \
-  OpenColorIO-Configs-1.0_r2.tar.gz 
+  OpenColorIO-Configs-1.0_r2.tar.gz
 
 getFileWithFallback oiio-1.5.11.tar.gz \
   https://github.com/OpenImageIO/oiio/archive/Release-1.5.11.tar.gz \
@@ -92,7 +94,7 @@ getFileWithFallback pyilmbase-2.2.0.tar.gz http://download.savannah.nongnu.org/r
 
 getFileWithFallback alembic-1.5.8.zip https://github.com/alembic/alembic/archive/1.5.8.zip alembic-1.5.8.zip
 
-getFileWithFallback double-conversion-1.1.5.tar.gz https://github.com/google/double-conversion/archive/v1.1.5.tar.gz double-conversion-1.1.5.tar.gz 
+getFileWithFallback double-conversion-1.1.5.tar.gz https://github.com/google/double-conversion/archive/v1.1.5.tar.gz double-conversion-1.1.5.tar.gz
 
 getFileWithFallback ptex-2.0.41.tar.gz \
   http://github.com/wdas/ptex/archive/v2.0.41.tar.gz \

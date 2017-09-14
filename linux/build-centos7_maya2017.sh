@@ -6,18 +6,24 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-if [ ! -f "$1/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz" ]; then
-  echo "Couldn't find file $1/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz"
+export DOWNLOAD_DIR=$1
+
+if [ ! -f "$DOWNLOAD_DIR/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz" ]; then
+  echo "Couldn't find file $DOWNLOAD_DIR/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz"
   exit 1
 fi
 
-if [ ! -f "$1/Maya2017_Update3_DEVKIT_Linux.tgz" ]; then
-  echo "Couldn't find file $1/Maya2017_Update3_DEVKIT_Linux.tgz"
+if [ ! -f "$DOWNLOAD_DIR/Maya2017_Update3_DEVKIT_Linux.tgz" ]; then
+  echo "Couldn't find file $DOWNLOAD_DIR/Maya2017_Update3_DEVKIT_Linux.tgz"
   exit 1
 fi
 
 echo "Copy local root certificates for corporate networks"
 [ -e /etc/pki/ca-trust/source/anchors ] && cp -u /etc/pki/ca-trust/source/anchors/* cert/
+
+export LOCAL_IP=`ip route get 8.8.8.8 | head -1 | cut -d' ' -f8`
+
+scripts/download_vfx.sh
 
 # Start a local server to serve files needed during the build.
 cd $1 && python -m SimpleHTTPServer && cd - &
@@ -34,11 +40,11 @@ docker build -t "usd-docker/base:1-centos7" -f centos7/base/Dockerfile .
 docker tag -f "usd-docker/base:1-centos7" "usd-docker/base:latest-centos7"
 
 echo "Build VFX packages"
-docker build -t "usd-docker/vfx:1-centos7" -f centos7/vfx/Dockerfile .
+docker build --build-arg current_host_ip_address=$LOCAL_IP -t "usd-docker/vfx:1-centos7" -f centos7/vfx/Dockerfile .
 docker tag -f "usd-docker/vfx:1-centos7" "usd-docker/vfx:latest-centos7"
 
 echo "Build Maya2017"
-docker build -t "usd-docker/maya2017:1-centos7" -f centos7/dcc/Dockerfile_maya2017 .
+docker build --build-arg current_host_ip_address=$LOCAL_IP -t "usd-docker/maya2017:1-centos7" -f centos7/dcc/Dockerfile_maya2017 .
 docker tag -f "usd-docker/maya2017:1-centos7" "usd-docker/maya2017:latest-centos7"
 
 echo "Build USD"
