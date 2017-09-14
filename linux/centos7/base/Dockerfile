@@ -57,7 +57,8 @@ RUN yum -y install \
     pulseaudio-libs-devel.x86_64 \
     xorg-x11-fonts-Type1 \
     ca-certificates \
-    python-devel
+    python-devel \
+    qt-devel
 
 COPY cert/* /etc/pki/ca-trust/source/anchors/
 

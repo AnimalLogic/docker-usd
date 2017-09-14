@@ -6,15 +6,15 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-export DOWNLOAD_DIR=$1
+export DOWNLOADS_DIR=$1
 
-if [ ! -f "$DOWNLOAD_DIR/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz" ]; then
-  echo "Couldn't find file $DOWNLOAD_DIR/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz"
+if [ ! -f "$DOWNLOADS_DIR/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz" ]; then
+  echo "Couldn't find file $DOWNLOADS_DIR/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz"
   exit 1
 fi
 
-if [ ! -f "$DOWNLOAD_DIR/Maya2017_Update3_DEVKIT_Linux.tgz" ]; then
-  echo "Couldn't find file $DOWNLOAD_DIR/Maya2017_Update3_DEVKIT_Linux.tgz"
+if [ ! -f "$DOWNLOADS_DIR/Maya2017_Update3_DEVKIT_Linux.tgz" ]; then
+  echo "Couldn't find file $DOWNLOADS_DIR/Maya2017_Update3_DEVKIT_Linux.tgz"
   exit 1
 fi
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -e
-set -e
+
 if [ -z "$1" ]; then
-  echo "Please pass a path to a folder that contains Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz and Maya2017_Update3_DEVKIT_Linux.tgz"
+  echo "Please pass a path to a folder that will contain downloaded source tarballs (../apps is our default)"
   exit 1
 fi
 
-export DOWNLOAD_DIR=$1
+export DOWNLOADS_DIR=$1
 
 echo "Copy local root certificates for corporate networks"
 [ -e /etc/pki/ca-trust/source/anchors ] && cp -u /etc/pki/ca-trust/source/anchors/* cert/
