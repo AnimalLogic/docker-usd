@@ -24,12 +24,12 @@ will contain dozens of OSS packages with very different licenses.
 To build locally:
 ```bash
 cd linux
-./build-centos7.sh
+./build-centos7.sh ../apps
 ```
 
 To run usdview once built:
 ```bash
-./run.sh  usdview /opt/usd/share/usd/tutorials/authoringProperties/HelloWorld.usda
+./run-centos7.sh  usdview \$USD_INSTALL_ROOT/share/usd/tutorials/authoringProperties/HelloWorld.usda
 ```
 
 ## Roadmap
@@ -59,7 +59,7 @@ The builds have been tested on CentOS-6 and Ubuntu-14-10.
 ### Maya images
 We provide a few Dockerfiles that rely on having a maya devkit tarball available. Unfortunately the recent devkit are not accessible without Autodesk accounts which means we cannot provide automatic downloads for these.
 
-We have tried to simplify the process by allowing you to download the tarballs and place them in a `apps` folder and they will be fed to the build via a temporary python http server... this is not for the feint of heart and will require a few manual updates to the Dockerfile_maya* (replace the `_YOUR_HOST_IP_ADRESS_HERE_` with your host IP address) files. We would like to improve this in the future by "configuring" the Dockerfiles for specific targets depending on which builds are required.
+We have tried to simplify the process by allowing you to download the tarballs and place them in a `apps` folder and they will be fed to the build via a temporary python http server... this is not for the feint of heart. We would like to improve this in the future by "configuring" the Dockerfiles for specific targets depending on which builds are required.
 
 ## Credits:
 * For USD: http://openusd.org
