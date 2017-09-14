@@ -12,6 +12,8 @@ ENV HTTP_HOSTNAME=_YOUR_HOST_IP_ADRESS_HERE_
 
 COPY scripts/build_maya2017.sh /tmp/
 
+RUN yum install -y tcsh libXp libXpm fam libpng12 libXcomposite libjpeg
+
 RUN /tmp/build_maya2017.sh \
     && echo alias hpython="\"$MAYA_LOCATION/bin/mayapy\"" >> ~/.bashrc \
     && echo alias hpip="\"mayapy -m pip\"" >> ~/.bashrc
