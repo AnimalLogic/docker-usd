@@ -28,6 +28,7 @@ cd $TMP_DIR && \
       -DGLEW_INCLUDE_DIR=$BUILD_DIR/include/GL \
       -DGLEW_LIBRARY=$BUILD_DIR/lib/libGLEW.so \
       -DPXR_MALLOC_LIBRARY:path=$BUILD_DIR/lib/libjemalloc.so \
+      -DPXR_BUILD_ALEMBIC_PLUGIN=ON \
       .. && \
     make -j ${BUILD_PROCS} && \
     make install && \

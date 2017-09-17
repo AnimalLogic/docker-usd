@@ -27,14 +27,14 @@ trap finish EXIT
 
 echo "Build base: base centos packages and gcc"
 docker build -t "usd-docker/base:1-centos7" -f centos7/base/Dockerfile .
-docker tag -f "usd-docker/base:1-centos7" "usd-docker/base:latest-centos7"
+docker tag "usd-docker/base:1-centos7" "usd-docker/base:latest-centos7"
 
 echo "Build VFX packages"
 docker build --build-arg current_host_ip_address=$LOCAL_IP -t "usd-docker/vfx:1-centos7" -f centos7/vfx/Dockerfile .
-docker tag -f "usd-docker/vfx:1-centos7" "usd-docker/vfx:latest-centos7"
+docker tag "usd-docker/vfx:1-centos7" "usd-docker/vfx:latest-centos7"
 
 echo "Build USD"
 docker build -t "usd-docker/usd:0.8.0-centos7" -f centos7/usd/Dockerfile .
-docker tag -f "usd-docker/usd:0.8.0-centos7" "usd-docker/usd:0.8.0-centos7"
-docker tag -f "usd-docker/usd:0.8.0-centos7" "usd-docker/usd:latest-centos7"
-docker tag -f "usd-docker/usd:0.8.0-centos7" "usd-docker/usd:latest-centos7"
+docker tag "usd-docker/usd:0.8.0-centos7" "usd-docker/usd:0.8.0-centos7"
+docker tag "usd-docker/usd:0.8.0-centos7" "usd-docker/usd:latest-centos7"
+docker tag "usd-docker/usd:0.8.0-centos7" "usd-docker/usd:latest-centos7"
