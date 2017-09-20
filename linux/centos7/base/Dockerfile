@@ -16,7 +16,8 @@ ENV PKG_CONFIG_PATH=$BUILD_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
 ENV LD_LIBRARY_PATH=$BUILD_DIR/lib64:$BUILD_DIR/lib:$LD_LIBRARY_PATH
 
 RUN yum -y groupinstall "Development Tools"
-RUN yum -y install \
+RUN yum install -y epel-release && sed -i "s/mirrorlist=https/mirrorlist=http/" /etc/yum.repos.d/epel.repo
+RUN yum install -y  \
     wget \
     openssl-devel \
     openssl \
@@ -69,7 +70,11 @@ RUN yum -y install \
     fam \
     libpng12 \
     libXcomposite \
-    libjpeg
+    libjpeg \
+    python-pip \
+    qt-devel.x86_64 \
+    python-pyside-devel.x86_64 \
+    pyside-tools.x86_64
 
 COPY cert/* /etc/pki/ca-trust/source/anchors/
 

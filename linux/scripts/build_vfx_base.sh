@@ -7,11 +7,13 @@ mkdir -p $TMP_DIR
 #----------------------------------------------
 # build and install setuptools
 #----------------------------------------------
+if [ "`cat /etc/redhat-release | grep -oP '(?<= )[0-9]+(?=\.)'`" == "6" ]; then
 wget https://pypi.io/packages/source/s/setuptools/setuptools-30.0.0.tar.gz -P $DOWNLOADS_DIR -nc --no-check-certificate
 cd $TMP_DIR && \
  	tar -zxf $DOWNLOADS_DIR/setuptools-30.0.0.tar.gz && \
     cd $TMP_DIR/setuptools-30.0.0 && \
     $PYTHON_EXECUTABLE setup.py install
+fi
 
 #----------------------------------------------
 # build and install readline
@@ -92,6 +94,10 @@ cd $TMP_DIR &&\
     cd $TMP_DIR/PyOpenGL-3.0.2 &&\
     $PYTHON_EXECUTABLE setup.py install
 
+
+if [ "`cat /etc/redhat-release | grep -oP '(?<= )[0-9]+(?=\.)'`" == "6" ]; then
+# CentOS 6 only
+
 #----------------------------------------------
 # build and install Qt
 #----------------------------------------------
@@ -156,6 +162,7 @@ cd $TMP_DIR &&\
       -DPYTHON_EXECUTABLE=$PYTHON_EXECUTABLE &&\
     make -j ${BUILD_PROCS} &&\
     make install
+fi
 
 #----------------------------------------------
 # build and install TBB
