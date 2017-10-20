@@ -34,7 +34,7 @@ docker build --build-arg current_host_ip_address=$LOCAL_IP -t "usd-docker/vfx:1-
 docker tag "usd-docker/vfx:1-centos7" "usd-docker/vfx:latest-centos7"
 
 echo "Build USD"
-docker build -t "usd-docker/usd:0.8.0-centos7" -f centos7/usd/Dockerfile .
-docker tag "usd-docker/usd:0.8.0-centos7" "usd-docker/usd:0.8.0-centos7"
-docker tag "usd-docker/usd:0.8.0-centos7" "usd-docker/usd:latest-centos7"
-docker tag "usd-docker/usd:0.8.0-centos7" "usd-docker/usd:latest-centos7"
+docker build -t "usd-docker/usd:0.8.1-centos7" -f centos7/usd/Dockerfile .
+docker tag "usd-docker/usd:0.8.1-centos7" "usd-docker/usd:0.8.1-centos7"
+docker tag "usd-docker/usd:0.8.1-centos7" "usd-docker/usd:latest-centos7"
+docker tag "usd-docker/usd:0.8.1-centos7" "usd-docker/usd:latest-centos7"

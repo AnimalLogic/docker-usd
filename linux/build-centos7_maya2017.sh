@@ -48,7 +48,7 @@ docker build --build-arg current_host_ip_address=$LOCAL_IP -t "usd-docker/maya20
 docker tag "usd-docker/maya2017:1-centos7" "usd-docker/maya2017:latest-centos7"
 
 echo "Build USD"
-docker build -t "usd-docker/usd:0.8.0-centos7-maya2017" -f centos7/usd/Dockerfile_maya2017 .
-docker tag "usd-docker/usd:0.8.0-centos7-maya2017" "usd-docker/usd:0.8.0-centos7-maya2017"
-docker tag "usd-docker/usd:0.8.0-centos7-maya2017" "usd-docker/usd:latest-centos7-maya2017"
-docker tag "usd-docker/usd:0.8.0-centos7-maya2017" "usd-docker/usd:latest-centos7-mayalatest"
+docker build -t "usd-docker/usd:0.8.1-centos7-maya2017" -f centos7/usd/Dockerfile_maya2017 .
+docker tag "usd-docker/usd:0.8.1-centos7-maya2017" "usd-docker/usd:0.8.1-centos7-maya2017"
+docker tag "usd-docker/usd:0.8.1-centos7-maya2017" "usd-docker/usd:latest-centos7-maya2017"
+docker tag "usd-docker/usd:0.8.1-centos7-maya2017" "usd-docker/usd:latest-centos7-mayalatest"
