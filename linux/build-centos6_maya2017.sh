@@ -11,8 +11,8 @@ if [ ! -f "$1/Autodesk_Maya_2017_Update4_EN_Linux_64bit.tgz" ]; then
   exit 1
 fi
 
-if [ ! -f "$1/Maya2017_DEVKIT_Linux.tgz" ]; then
-  echo "Couldn't find file $1/Maya2017_DEVKIT_Linux.tgz"
+if [ ! -f "$1/Maya2017_Update3_DEVKIT_Linux.tgz" ]; then
+  echo "Couldn't find file $1/Maya2017_Update3_DEVKIT_Linux.tgz"
   exit 1
 fi
 
@@ -42,7 +42,7 @@ docker build -t "usd-docker/maya2017:1-centos6" -f centos6/dcc/Dockerfile_maya20
 docker tag -f "usd-docker/maya2017:1-centos6" "usd-docker/maya2017:latest-centos6"
 
 echo "Build USD"
-docker build -t "usd-docker/usd:0.8.0-centos6-maya2017" -f centos6/usd/Dockerfile_maya2017 .
-docker tag -f "usd-docker/usd:0.8.0-centos6-maya2017" "usd-docker/usd:0.8.0-centos6-maya2017"
-docker tag -f "usd-docker/usd:0.8.0-centos6-maya2017" "usd-docker/usd:latest-centos6-maya2017"
-docker tag -f "usd-docker/usd:0.8.0-centos6-maya2017" "usd-docker/usd:latest-centos6-mayalatest"
+docker build -t "usd-docker/usd:0.8.1-centos6-maya2017" -f centos6/usd/Dockerfile_maya2017 .
+docker tag -f "usd-docker/usd:0.8.1-centos6-maya2017" "usd-docker/usd:0.8.1-centos6-maya2017"
+docker tag -f "usd-docker/usd:0.8.1-centos6-maya2017" "usd-docker/usd:latest-centos6-maya2017"
+docker tag -f "usd-docker/usd:0.8.1-centos6-maya2017" "usd-docker/usd:latest-centos6-mayalatest"
