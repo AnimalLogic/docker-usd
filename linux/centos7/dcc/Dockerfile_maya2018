@@ -1,0 +1,22 @@
+############################################################
+# Dockerfile to install maya2018
+# Based on nvidia/base:centos7-usd-0.8
+
+FROM usd-docker/vfx:latest-centos7
+
+LABEL maya.version="2018.0" maintainer="Animal Logic"
+
+ARG current_host_ip_address
+
+ENV MAYA_INSTALL_LOCATION=$BUILD_DIR \
+    MAYA_LOCATION=$MAYA_INSTALL_LOCATION/usr/autodesk/maya2018 \
+    HTTP_HOSTNAME=$current_host_ip_address
+
+COPY scripts/build_maya2018.sh /tmp/
+
+# Setup environment
+# Workaround for "Segmentation fault (core dumped)"
+# See https://forums.autodesk.com/t5/maya-general/render-crash-on-linux/m-p/5608552/highlight/true
+
+ENV PATH=$MAYA_LOCATION/bin:$PATH \
+    MAYA_DISABLE_CIP=1
