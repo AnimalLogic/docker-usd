@@ -27,8 +27,8 @@ cd $TMP_DIR && \
 # build and install boost
 #----------------------------------------------
 cd $TMP_DIR &&\
-    tar -jxf $DOWNLOADS_DIR/boost_1_55_0.tar.bz2 &&\
-    cd $TMP_DIR/boost_1_55_0 &&\
+    tar -jxf $DOWNLOADS_DIR/boost_1_61_0.tar.bz2 &&\
+    cd $TMP_DIR/boost_1_61_0 &&\
     ./bootstrap.sh \
         --prefix=$BUILD_DIR \
         --with-python=$BUILD_DIR/bin/$PYTHON_EXECUTABLE \
@@ -212,16 +212,6 @@ cd $TMP_DIR &&\
     tar -zxf $DOWNLOADS_DIR/numpy-1.9.2.tar.gz &&\
     cd $TMP_DIR/numpy-1.9.2 && \
     $PYTHON_EXECUTABLE setup.py install
-
-#----------------------------------------------
-# build and install google/double-conversion
-#----------------------------------------------
-cd $TMP_DIR &&\
-    tar -zxf $DOWNLOADS_DIR/double-conversion-1.1.5.tar.gz &&\
-    cd $TMP_DIR/double-conversion-1.1.5 &&\
-     cmake -DCMAKE_INSTALL_PREFIX=$BUILD_DIR -DBUILD_SHARED_LIBS=ON && \
-     make -j ${BUILD_PROCS} && \
-     make install
 
 #----------------------------------------------
 # build and install glfw

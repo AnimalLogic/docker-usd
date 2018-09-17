@@ -4,5 +4,5 @@ linux/cert/*.pem
 .pydevproject
 .cproject
 .settings/
-apps/*
+downloads/*
 Testing

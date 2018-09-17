@@ -7,10 +7,10 @@ mkdir -p $TMP_DIR
 #----------------------------------------------
 # build and install USD
 #----------------------------------------------
-wget https://github.com/PixarAnimationStudios/USD/archive/v${USD_VERSION}.tar.gz -O $DOWNLOADS_DIR/USD-${USD_VERSION}.tar.gz -nc
 
+export MAYA_EXECUTABLE=
 cd $TMP_DIR && \
-   tar -zxf $DOWNLOADS_DIR/USD-${USD_VERSION}.tar.gz && \
+   tar -zxf $DOWNLOADS_DIR/USD-v${USD_VERSION}.tar.gz && \
    cd $TMP_DIR/USD-${USD_VERSION} && \
     mkdir build && \
     cd build && \
@@ -20,13 +20,13 @@ cd $TMP_DIR && \
       -DPXR_BUILD_TESTS=ON \
       -DOPENEXR_LOCATION=$BUILD_DIR \
       -DPTEX_INCLUDE_DIR=$BUILD_DIR/include/ptex \
-      -DOIIO_BASE_DIR=$BUILD_DIR \
       -DOPENSUBDIV_ROOT_DIR=$BUILD_DIR \
-      -DDOUBLE_CONVERSION_INCLUDE_DIR=$BUILD_DIR/include \
-      -DDOUBLE_CONVERSION_LIBRARY=$BUILD_DIR/lib/libdouble-conversion.so \
       -DPTEX_LIBRARY=$BUILD_DIR/lib/libPtex.so \
       -DGLEW_INCLUDE_DIR=$BUILD_DIR/include/GL \
       -DGLEW_LIBRARY=$BUILD_DIR/lib/libGLEW.so \
+      -DPXR_BUILD_MAYA_PLUGIN=TRUE \
+      -DMAYA_LOCATION=/opt/usd/maya${MAYA_MAJOR_VERSION}DevKit \
+      -DMAYA_EXECUTABLE=/opt/usd/maya${MAYA_MAJOR_VERSION}DevKit/bin/mayald \
       -DPXR_MALLOC_LIBRARY:path=$BUILD_DIR/lib/libjemalloc.so \
       -DPXR_BUILD_ALEMBIC_PLUGIN=ON \
       .. && \
