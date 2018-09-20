@@ -8,7 +8,8 @@ fi
 
 export DOWNLOADS_DIR=$1
 
-export USD_VERSION=18.09
+export USD_VERSION="18.09"
+export MAYA_MAJOR_VERSION="2018"
 
 echo "Copy local root certificates for corporate networks"
 [ -e /etc/pki/ca-trust/source/anchors ] && cp -u /etc/pki/ca-trust/source/anchors/* cert/

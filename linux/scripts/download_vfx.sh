@@ -83,9 +83,4 @@ getFileWithFallback MarkupSafe-0.23.tar.gz https://pypi.python.org/packages/sour
 
 getFileWithFallback Jinja2-2.8.tar.gz https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.8.tar.gz
 
-if [ "$MAYA_MAJOR_VERSION" = "2018" ]
-then
-  getFileWithFallback Maya2018u4_DEVKIT_Linux.tgz https://s3-us-west-2.amazonaws.com/autodesk-adn-transfer/ADN+Extranet/M%26E/Maya/devkit+2018/Maya2018u4_DEVKIT_Linux.tgz
-fi
-
-getFileWithFallback USD-v${USD_VERSION}.tar.gz https://github.com/PixarAnimationStudios/USD/archive/v${USD_VERSION}.tar.gz
+getFileWithFallback googletest-1.8.1.tar.gz https://github.com/google/googletest/archive/release-1.8.1.tar.gz

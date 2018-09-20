@@ -235,4 +235,15 @@ cd $TMP_DIR &&\
     make -j ${BUILD_PROCS} && \
     make install
 
+#----------------------------------------------
+# build and install gtest
+#----------------------------------------------
+cd $TMP_DIR &&\
+   tar -xjf $DOWNLOADS_DIR/googletest-1.8.1.tar.gz &&\
+   cd $TMP_DIR/googletest-release-1.8.1 && \
+    cmake \
+    -DCMAKE_INSTALL_PREFIX=$BUILD_DIR && \
+    make -j ${BUILD_PROCS} && \
+    make install
+
 rm -rf $TMP_DIR
