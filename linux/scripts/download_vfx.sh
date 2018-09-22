@@ -83,4 +83,6 @@ getFileWithFallback MarkupSafe-0.23.tar.gz https://pypi.python.org/packages/sour
 
 getFileWithFallback Jinja2-2.8.tar.gz https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.8.tar.gz
 
+getFileWithFallback cmake-3.11.4-Linux-x86_64.tar.gz https://cmake.org/files/v3.11/cmake-3.11.4-Linux-x86_64.tar.gz
+
 getFileWithFallback googletest-1.8.1.tar.gz https://github.com/google/googletest/archive/release-1.8.1.tar.gz

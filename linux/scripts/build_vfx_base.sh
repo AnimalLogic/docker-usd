@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -ex
 
 # Build script to be run from a single RUN in Dockerfile to minimise image size
 mkdir -p $TMP_DIR
@@ -236,13 +236,20 @@ cd $TMP_DIR &&\
     make install
 
 #----------------------------------------------
+# install cmake-3
+#----------------------------------------------
+cd $TMP_DIR &&\
+   tar -zxf $DOWNLOADS_DIR/cmake-3.11.4-Linux-x86_64.tar.gz &&\
+   mv cmake-3.11.4-Linux-x86_64 $BUILD_DIR/cmake-3
+
+#----------------------------------------------
 # build and install gtest
 #----------------------------------------------
 cd $TMP_DIR &&\
-   tar -xjf $DOWNLOADS_DIR/googletest-1.8.1.tar.gz &&\
+   tar -zxf $DOWNLOADS_DIR/googletest-1.8.1.tar.gz &&\
    cd $TMP_DIR/googletest-release-1.8.1 && \
-    cmake \
-    -DCMAKE_INSTALL_PREFIX=$BUILD_DIR && \
+    mkdir build && cd build && \
+    $BUILD_DIR/cmake-3/bin/cmake -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$BUILD_DIR .. && \
     make -j ${BUILD_PROCS} && \
     make install
 

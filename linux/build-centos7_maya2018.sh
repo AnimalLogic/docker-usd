@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
 
 set -e
-if [ -z "$1" ]; then
-  echo "Please pass a path to a folder to use as a download cache"
-  exit 1
-fi
 
-export DOWNLOADS_DIR=$1
-
+export DOWNLOADS_DIR="`pwd`/../downloads"
 export USD_VERSION="18.09"
 export MAYA_MAJOR_VERSION="2018"
 
+echo "Downloads folder: ${DOWNLOADS_DIR}"
 echo "Copy local root certificates for corporate networks"
 [ -e /etc/pki/ca-trust/source/anchors ] && cp -u /etc/pki/ca-trust/source/anchors/* cert/
 
@@ -21,7 +17,7 @@ scripts/download_dcc.sh
 scripts/download_usd.sh
 
 # Start a local server to serve files needed during the build.
-cd $1 && python -m SimpleHTTPServer && cd - &
+cd ${DOWNLOADS_DIR} && python -m SimpleHTTPServer && cd - &
 
 httpServerPID=$(ps -ef | grep SimpleHTTPServer | grep -v grep | awk '{print $2}')
 function finish {
