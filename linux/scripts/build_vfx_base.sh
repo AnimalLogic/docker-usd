@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -ex
 
 # Build script to be run from a single RUN in Dockerfile to minimise image size
 mkdir -p $TMP_DIR
@@ -27,8 +27,8 @@ cd $TMP_DIR && \
 # build and install boost
 #----------------------------------------------
 cd $TMP_DIR &&\
-    tar -jxf $DOWNLOADS_DIR/boost_1_55_0.tar.bz2 &&\
-    cd $TMP_DIR/boost_1_55_0 &&\
+    tar -jxf $DOWNLOADS_DIR/boost_1_61_0.tar.bz2 &&\
+    cd $TMP_DIR/boost_1_61_0 &&\
     ./bootstrap.sh \
         --prefix=$BUILD_DIR \
         --with-python=$BUILD_DIR/bin/$PYTHON_EXECUTABLE \
@@ -214,16 +214,6 @@ cd $TMP_DIR &&\
     $PYTHON_EXECUTABLE setup.py install
 
 #----------------------------------------------
-# build and install google/double-conversion
-#----------------------------------------------
-cd $TMP_DIR &&\
-    tar -zxf $DOWNLOADS_DIR/double-conversion-1.1.5.tar.gz &&\
-    cd $TMP_DIR/double-conversion-1.1.5 &&\
-     cmake -DCMAKE_INSTALL_PREFIX=$BUILD_DIR -DBUILD_SHARED_LIBS=ON && \
-     make -j ${BUILD_PROCS} && \
-     make install
-
-#----------------------------------------------
 # build and install glfw
 #----------------------------------------------
 cd $TMP_DIR &&\
@@ -242,6 +232,24 @@ cd $TMP_DIR &&\
    cd $TMP_DIR/jemalloc-4.3.1 &&\
    ./configure \
       --prefix=$BUILD_DIR && \
+    make -j ${BUILD_PROCS} && \
+    make install
+
+#----------------------------------------------
+# install cmake-3
+#----------------------------------------------
+cd $TMP_DIR &&\
+   tar -zxf $DOWNLOADS_DIR/cmake-3.11.4-Linux-x86_64.tar.gz &&\
+   mv cmake-3.11.4-Linux-x86_64 $BUILD_DIR/cmake-3
+
+#----------------------------------------------
+# build and install gtest
+#----------------------------------------------
+cd $TMP_DIR &&\
+   tar -zxf $DOWNLOADS_DIR/googletest-1.8.1.tar.gz &&\
+   cd $TMP_DIR/googletest-release-1.8.1 && \
+    mkdir build && cd build && \
+    $BUILD_DIR/cmake-3/bin/cmake -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$BUILD_DIR .. && \
     make -j ${BUILD_PROCS} && \
     make install
 

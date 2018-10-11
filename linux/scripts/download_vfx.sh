@@ -27,7 +27,7 @@ function getFileWithFallback() {
 
 getFileWithFallback readline-6.2.4.1.tar.gz https://pypi.python.org/packages/source/r/readline/readline-6.2.4.1.tar.gz
 
-getFileWithFallback boost_1_55_0.tar.bz2 https://svwh.dl.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.bz2
+getFileWithFallback boost_1_61_0.tar.bz2 https://svwh.dl.sourceforge.net/project/boost/boost/1.61.0/boost_1_61_0.tar.bz2
 
 getFileWithFallback jpegsrc.v8c.tar.gz http://www.ijg.org/files/jpegsrc.v8c.tar.gz
 
@@ -71,8 +71,6 @@ getFileWithFallback pyilmbase-2.2.0.tar.gz http://download.savannah.nongnu.org/r
 
 getFileWithFallback alembic-1.5.8.zip https://github.com/alembic/alembic/archive/1.5.8.zip alembic-1.5.8.zip
 
-getFileWithFallback double-conversion-1.1.5.tar.gz https://github.com/google/double-conversion/archive/v1.1.5.tar.gz double-conversion-1.1.5.tar.gz
-
 getFileWithFallback ptex-2.0.41.tar.gz http://github.com/wdas/ptex/archive/v2.0.41.tar.gz
 
 getFileWithFallback glfw-3.2.1.zip https://github.com/glfw/glfw/releases/download/3.2.1/glfw-3.2.1.zip
@@ -85,3 +83,6 @@ getFileWithFallback MarkupSafe-0.23.tar.gz https://pypi.python.org/packages/sour
 
 getFileWithFallback Jinja2-2.8.tar.gz https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.8.tar.gz
 
+getFileWithFallback cmake-3.11.4-Linux-x86_64.tar.gz https://cmake.org/files/v3.11/cmake-3.11.4-Linux-x86_64.tar.gz
+
+getFileWithFallback googletest-1.8.1.tar.gz https://github.com/google/googletest/archive/release-1.8.1.tar.gz

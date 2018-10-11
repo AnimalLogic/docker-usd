@@ -24,8 +24,6 @@ cd $TMP_DIR && \
       -DPTEX_INCLUDE_DIR=$BUILD_DIR/include/ptex \
       -DOIIO_BASE_DIR=$BUILD_DIR \
       -DOPENSUBDIV_ROOT_DIR=$BUILD_DIR \
-      -DDOUBLE_CONVERSION_INCLUDE_DIR=$BUILD_DIR/include \
-      -DDOUBLE_CONVERSION_LIBRARY=$BUILD_DIR/lib/libdouble-conversion.so \
       -DPTEX_LIBRARY=$BUILD_DIR/lib/libPtex.so \
       -DGLEW_INCLUDE_DIR=$BUILD_DIR/include/GL \
       -DGLEW_LIBRARY=$BUILD_DIR/lib/libGLEW.so \
