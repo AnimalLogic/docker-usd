@@ -8,14 +8,11 @@ If you are running a linux supported by nvidia-docker you can also run usdview
 interactively using the run.sh script, including CUDA acceleration for OpenSubdiv.
 Otherwise you can still use most tools such as usdcat.
 
-The image tagged "usd-docker/vfx:centos7-usd-0.8" will be very similar to a VFX Platform 2016
+The image tagged "usd-docker/vfx:centos7-usd-latest" will be very similar to a VFX Platform 2016
 except for the Qt version still being at 4.8 as USD doesn't support Qt-5 and PySide-2 just yet.
 
-The image tagged "usd-docker/usd:centos7-usd-0.8" is built from the vfx one and adds
-USD 0.8.
-
-The centos-6 image takes about one hour to build and creates a 5GB image, the
-centos-7 image is faster to build and is about 4GB.
+The image tagged "usd-docker/usd:centos7-usd-latest" is built from the vfx one and adds
+USD.
 
 We will not release pre-built images on Docker Hub for now as they are big and
 will contain dozens of OSS packages with very different licenses.
@@ -24,12 +21,18 @@ will contain dozens of OSS packages with very different licenses.
 To build locally:
 ```bash
 cd linux
-./build-centos7.sh ../apps
+./build-centos7.sh
 ```
 
 To run usdview once built:
 ```bash
 ./run-centos7.sh  usdview \$USD_INSTALL_ROOT/share/usd/tutorials/authoringProperties/HelloWorld.usda
+```
+
+To build with maya
+```bash
+cd linux
+./build-centos7_maya.sh 2018
 ```
 
 ## Roadmap
@@ -59,7 +62,7 @@ The builds have been tested on CentOS-6 and Ubuntu-14-10.
 ### Maya images
 We provide a few Dockerfiles that rely on having a maya devkit tarball available. Unfortunately the recent devkit are not accessible without Autodesk accounts which means we cannot provide automatic downloads for these.
 
-We have tried to simplify the process by allowing you to download the tarballs and place them in a `apps` folder and they will be fed to the build via a temporary python http server... this is not for the feint of heart. We would like to improve this in the future by "configuring" the Dockerfiles for specific targets depending on which builds are required.
+We have tried to simplify the process by allowing you to download the tarballs and place them in a `downloads` folder and they will be fed to the build via a temporary python http server... this is not for the feint of heart. We would like to improve this in the future by "configuring" the Dockerfiles for specific targets depending on which builds are required.
 
 ## Credits:
 * For USD: http://openusd.org

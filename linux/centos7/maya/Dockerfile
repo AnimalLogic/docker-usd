@@ -4,16 +4,17 @@
 
 FROM usd-docker/vfx:latest-centos7
 
-LABEL maya.version="2018.0" maintainer="Animal Logic"
-
 ARG current_host_ip_address
+ARG maya_version
 
-ENV MAYA_LOCATION=$BUILD_DIR/maya2018DevKit \
+LABEL maya.version="${maya_version}.0" maintainer="Animal Logic"
+
+ENV MAYA_LOCATION=$BUILD_DIR/maya{maya_version}DevKit \
     HTTP_HOSTNAME=$current_host_ip_address \
     MAYA_EXECUTABLE=$MAYA_LOCATION/bin/maya \
-    MAYA_MAJOR_VERSION="2018"
+    MAYA_MAJOR_VERSION="${maya_version}"
 
-COPY scripts/build_maya2018.sh scripts/download_dcc.sh /tmp/
+COPY scripts/build_maya.sh scripts/download_maya.sh /tmp/
 
-RUN /tmp/download_dcc.sh && \
-    /tmp/build_maya2018.sh
+RUN /tmp/download_maya.sh && \
+    /tmp/build_maya.sh

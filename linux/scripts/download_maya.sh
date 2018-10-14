@@ -24,7 +24,9 @@ function getFileWithFallback() {
     fi
   fi
 }
-if [ "$MAYA_MAJOR_VERSION" = "2018" ]
-then
-  getFileWithFallback Maya2018u4_DEVKIT_Linux.tgz https://s3-us-west-2.amazonaws.com/autodesk-adn-transfer/ADN+Extranet/M%26E/Maya/devkit+2018/Maya2018u4_DEVKIT_Linux.tgz
+
+if [ "$MAYA_MAJOR_VERSION" = "2018" ]; then
+  getFileWithFallback Maya2018_DEVKIT_Linux.tgz https://s3-us-west-2.amazonaws.com/autodesk-adn-transfer/ADN+Extranet/M%26E/Maya/devkit+2018/Maya2018u4_DEVKIT_Linux.tgz ;
+else
+  getFileWithFallback Maya2017_DEVKIT_Linux.tgz https://s3-us-west-2.amazonaws.com/autodesk-adn-transfer/ADN+Extranet/M%26E/Maya/devkit+2017/Maya2017u4_DEVKIT_Linux.tgz ;
 fi

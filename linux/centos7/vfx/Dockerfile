@@ -4,7 +4,7 @@
 
 FROM usd-docker/base:latest-centos7
 
-MAINTAINER Aloys Baillet - Animal Logic
+LABEL maintainer="Aloys.Baillet - Animal Logic"
 
 ARG current_host_ip_address
 

@@ -1,20 +1,22 @@
 ############################################################
 # Dockerfile to build USD Maya
-FROM usd-docker/vfx:latest-centos7
+ARG maya_version
+FROM usd-docker/maya${maya_version}:latest-centos7
 
-ARG current_host_ip_address
 ARG usd_version
+ARG maya_version
+ARG current_host_ip_address
 
-LABEL pxr.usd.version="$usd_version" maintainer="Aloys.Baillet - Animal Logic"
+LABEL pxr.usd.version="${usd_version}" maintainer="Aloys.Baillet - Animal Logic"
 
-ENV USD_VERSION=$usd_version \
-    HTTP_HOSTNAME=$current_host_ip_address
+ENV USD_VERSION="${usd_version}" \
+    MAYA_MAJOR_VERSION="${maya_version}"
 
 COPY scripts/download_usd.sh scripts/build_usd.sh /tmp/
 RUN /tmp/download_usd.sh && \
     /tmp/build_usd.sh
 
-ENV USD_INSTALL_ROOT=$BUILD_DIR/usd/${USD_VERSION} \
+ENV USD_INSTALL_ROOT=$BUILD_DIR/usd/${usd_version} \
     USD_CONFIG_FILE=$USD_INSTALL_ROOT/pxrConfig.cmake \
     PATH=$PATH:$USD_INSTALL_ROOT/bin \
     LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$USD_INSTALL_ROOT/lib \

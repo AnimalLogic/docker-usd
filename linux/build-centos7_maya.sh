@@ -2,8 +2,14 @@
 
 set -e
 
+if [ -z "$1" ]; then
+  echo "Please pass the Maya Major version to use as the first and only argument (e.g. 2018)"
+  exit 1
+fi
+
 export DOWNLOADS_DIR="`pwd`/../downloads"
 export USD_VERSION="18.11"
+export MAYA_MAJOR_VERSION="$1"
 
 echo "Downloads folder: ${DOWNLOADS_DIR}"
 echo "Copy local root certificates for corporate networks"
@@ -12,6 +18,7 @@ echo "Copy local root certificates for corporate networks"
 export LOCAL_IP=`hostname -I|cut -d' ' -f1`
 
 scripts/download_vfx.sh
+scripts/download_maya.sh
 scripts/download_usd.sh
 
 # Start a local server to serve files needed during the build.
@@ -33,12 +40,20 @@ docker build --build-arg current_host_ip_address=${LOCAL_IP} \
              -f centos7/vfx/Dockerfile .
 docker tag "usd-docker/vfx:1-centos7" "usd-docker/vfx:latest-centos7"
 
+echo "Build Maya${MAYA_VERSION}"
+docker build --build-arg current_host_ip_address=$LOCAL_IP \
+             --build-arg maya_version=${MAYA_MAJOR_VERSION} \
+             -t "usd-docker/maya${MAYA_VERSION}:1-centos7" \
+             -f centos7/maya/Dockerfile .
+docker tag "usd-docker/maya${MAYA_VERSION}:1-centos7" "usd-docker/maya${MAYA_VERSION}:latest-centos7"
+
 echo "Build USD v${USD_VERSION}"
 
 docker build --build-arg current_host_ip_address=${LOCAL_IP} \
+             --build-arg maya_version=${MAYA_MAJOR_VERSION} \
              --build-arg usd_version=${USD_VERSION} \
              -t "usd-docker/usd:${USD_VERSION}-centos7" \
-             -f centos7/usd/Dockerfile .
+             -f centos7/usd/Dockerfile_maya .
 docker tag "usd-docker/usd:${USD_VERSION}-centos7" "usd-docker/usd:${USD_VERSION}-centos7"
 docker tag "usd-docker/usd:${USD_VERSION}-centos7" "usd-docker/usd:latest-centos7"
 docker tag "usd-docker/usd:${USD_VERSION}-centos7" "usd-docker/usd:latest-centos7"
