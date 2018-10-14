@@ -1,8 +1,8 @@
 ############################################################
 # Dockerfile to build USD on VFX Platform 2016
 # Based on nvidia/cuda:devel-centos6
-
-FROM nvidia/cudagl:9.2-devel-centos7
+ARG cuda_version=latest
+FROM nvidia/cudagl:${cuda_version}-devel-centos7
 
 LABEL maintainer="Aloys.Baillet - Animal Logic"
 
