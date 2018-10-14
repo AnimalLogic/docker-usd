@@ -146,6 +146,7 @@ cd $TMP_DIR &&\
       -DGLEW_LIBRARY=$BUILD_DIR/lib/libGLEW.so \
       -DNO_EXAMPLES=ON \
       -DNO_REGRESSION=1 \
+      -DOSD_CUDA_NVCC_FLAGS="--gpu-architecture compute_30" \
       -DNO_TUTORIALS=ON && \
     make VERBOSE=1 && \
     make install
