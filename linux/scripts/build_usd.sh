@@ -33,9 +33,12 @@ cd $TMP_DIR && \
       -DPXR_MALLOC_LIBRARY:path=$BUILD_DIR/lib/libjemalloc.so \
       -DPXR_BUILD_ALEMBIC_PLUGIN=ON \
       ${MAYA_OPS} \
-      .. && \
-    make -j ${BUILD_PROCS} && \
-    make install && \
-  cd -
+      ..
+
+cd $TMP_DIR/USD-${USD_VERSION}/build && \
+  make -j ${BUILD_PROCS}
+
+cd $TMP_DIR/USD-${USD_VERSION}/build && \
+    make install
 
 rm -rf $TMP_DIR

@@ -37,7 +37,6 @@ docker build --build-arg current_host_ip_address=${LOCAL_IP} \
 docker tag "usd-docker/vfx:1-centos7" "usd-docker/vfx:latest-centos7"
 
 echo "Build USD v${USD_VERSION}"
-
 docker build --build-arg current_host_ip_address=${LOCAL_IP} \
              --build-arg usd_version=${USD_VERSION} \
              -t "usd-docker/usd:${USD_VERSION}-centos7" \

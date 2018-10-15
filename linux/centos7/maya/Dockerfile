@@ -9,10 +9,10 @@ ARG maya_version
 
 LABEL maya.version="${maya_version}.0" maintainer="Animal Logic"
 
-ENV MAYA_LOCATION=$BUILD_DIR/maya{maya_version}DevKit \
-    HTTP_HOSTNAME=$current_host_ip_address \
-    MAYA_EXECUTABLE=$MAYA_LOCATION/bin/maya \
-    MAYA_MAJOR_VERSION="${maya_version}"
+ENV MAYA_LOCATION=$BUILD_DIR/maya{maya_version}DevKit
+ENV HTTP_HOSTNAME=$current_host_ip_address
+ENV MAYA_EXECUTABLE=$MAYA_LOCATION/bin/maya
+ENV MAYA_MAJOR_VERSION="${maya_version}"
 
 COPY scripts/build_maya.sh scripts/download_maya.sh /tmp/
 
