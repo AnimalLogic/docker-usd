@@ -43,4 +43,3 @@ docker build --build-arg current_host_ip_address=${LOCAL_IP} \
              -f centos7/usd/Dockerfile .
 docker tag "usd-docker/usd:${USD_VERSION}-centos7" "usd-docker/usd:${USD_VERSION}-centos7"
 docker tag "usd-docker/usd:${USD_VERSION}-centos7" "usd-docker/usd:latest-centos7"
-docker tag "usd-docker/usd:${USD_VERSION}-centos7" "usd-docker/usd:latest-centos7"

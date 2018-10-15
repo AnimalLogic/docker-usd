@@ -54,8 +54,7 @@ echo "Build USD v${USD_VERSION}"
 docker build --build-arg current_host_ip_address=${LOCAL_IP} \
              --build-arg maya_version=${MAYA_MAJOR_VERSION} \
              --build-arg usd_version=${USD_VERSION} \
-             -t "usd-docker/usd:${USD_VERSION}-centos7" \
+             -t "usd-docker/maya${MAYA_VERSION}-usd:${USD_VERSION}-centos7" \
              -f centos7/usd/Dockerfile_maya .
-docker tag "usd-docker/usd:${USD_VERSION}-centos7" "usd-docker/usd:${USD_VERSION}-centos7"
-docker tag "usd-docker/usd:${USD_VERSION}-centos7" "usd-docker/usd:latest-centos7"
-docker tag "usd-docker/usd:${USD_VERSION}-centos7" "usd-docker/usd:latest-centos7"
+docker tag "usd-docker/maya${MAYA_VERSION}-usd:${USD_VERSION}-centos7" "usd-docker/maya${MAYA_VERSION}-usd:latest-centos7"
+docker tag "usd-docker/maya${MAYA_VERSION}-usd:${USD_VERSION}-centos7" "usd-docker/maya-usd:latest-centos7"
