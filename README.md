@@ -26,7 +26,8 @@ cd linux
 
 To run usdview once built:
 ```bash
-./run-centos7.sh  usdview \$USD_INSTALL_ROOT/share/usd/tutorials/authoringProperties/HelloWorld.usda
+wget https://developer.apple.com/arkit/gallery/models/retrotv/retrotv.usdz --output-document=../data/retrotv.usdz
+./run-centos7.sh usdview /data/retrotv.usdz
 ```
 
 To build with maya
