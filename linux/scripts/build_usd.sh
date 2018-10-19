@@ -41,4 +41,8 @@ cd $TMP_DIR/USD-${USD_VERSION}/build && \
 cd $TMP_DIR/USD-${USD_VERSION}/build && \
     make install
 
+#mkdir -p $BUILD_DIR/usd/${USD_VERSION}/extras/usdObj
+#cp $TMP_DIR/USD-$USD_VERSION/build/extras/usd/examples/usdObj/plugInfo.json $BUILD_DIR/usd/${USD_VERSION}/extras/usdObj
+#cp $TMP_DIR/USD-$USD_VERSION/build/extras/usd/examples/usdObj/usdObj.so $BUILD_DIR/usd/${USD_VERSION}/extras/usdObj
+
 rm -rf $TMP_DIR
