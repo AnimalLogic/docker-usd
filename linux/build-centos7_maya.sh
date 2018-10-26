@@ -10,7 +10,7 @@ fi
 export DOWNLOADS_DIR="`pwd`/../downloads"
 export USD_VERSION="18.11"
 export CUDA_VERSION="9.0"
-export MAYA_MAJOR_VERSION="$1"
+export MAYA_VERSION="$1"
 
 echo "Downloads folder: ${DOWNLOADS_DIR}"
 echo "Copy local root certificates for corporate networks"
@@ -45,14 +45,14 @@ docker tag "usd-docker/vfx:1-centos7" "usd-docker/vfx:latest-centos7"
 
 echo "Build Maya v${MAYA_VERSION}"
 docker build --build-arg current_host_ip_address=$LOCAL_IP \
-             --build-arg maya_version=${MAYA_MAJOR_VERSION} \
+             --build-arg maya_version=${MAYA_VERSION} \
              -t "usd-docker/maya${MAYA_VERSION}:1-centos7" \
              -f centos7/maya/Dockerfile .
 docker tag "usd-docker/maya${MAYA_VERSION}:1-centos7" "usd-docker/maya${MAYA_VERSION}:latest-centos7"
 
 echo "Build USD v${USD_VERSION}"
 docker build --build-arg current_host_ip_address=${LOCAL_IP} \
-             --build-arg maya_version=${MAYA_MAJOR_VERSION} \
+             --build-arg maya_version=${MAYA_VERSION} \
              --build-arg usd_version=${USD_VERSION} \
              -t "usd-docker/maya${MAYA_VERSION}-usd:${USD_VERSION}-centos7" \
              -f centos7/usd/Dockerfile_maya .
