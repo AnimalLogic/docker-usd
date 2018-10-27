@@ -1,7 +1,8 @@
 ############################################################
 # Dockerfile to build USD Maya
 ARG maya_version
-FROM usd-docker/maya${maya_version}:latest-centos7
+ARG from_name=docker-usd
+FROM ${from_name}/maya${maya_version}:latest-centos7
 
 ARG usd_version
 ARG maya_version

@@ -8,10 +8,10 @@ If you are running a linux supported by nvidia-docker you can also run usdview
 interactively using the run.sh script, including CUDA acceleration for OpenSubdiv.
 Otherwise you can still use most tools such as usdcat.
 
-The image tagged "usd-docker/vfx:centos7-usd-latest" will be very similar to a VFX Platform 2016
+The image tagged "docker-usd/vfx:centos7-usd-latest" will be very similar to a VFX Platform 2016
 except for the Qt version still being at 4.8 as USD doesn't support Qt-5 and PySide-2 just yet.
 
-The image tagged "usd-docker/usd:centos7-usd-latest" is built from the vfx one and adds
+The image tagged "docker-usd/usd:centos7-usd-latest" is built from the vfx one and adds
 USD.
 
 We will not release pre-built images on Docker Hub for now as they are big and

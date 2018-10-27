@@ -2,7 +2,8 @@
 # Dockerfile to build USD on VFX Platform 2016
 # Based on nvidia/cuda:devel-centos6
 
-FROM usd-docker/base:latest-centos7
+ARG from_name=docker-usd
+FROM ${from_name}/base:latest-centos7
 
 LABEL maintainer="Aloys.Baillet - Animal Logic"
 

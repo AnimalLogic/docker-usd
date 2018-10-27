@@ -1,6 +1,7 @@
 ############################################################
 # Dockerfile to build USD Maya
-FROM usd-docker/vfx:latest-centos7
+ARG from_name=docker-usd
+FROM ${from_name}/vfx:latest-centos7
 
 ARG current_host_ip_address
 ARG usd_version

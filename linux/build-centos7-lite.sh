@@ -26,14 +26,15 @@ trap finish EXIT
 
 echo "Build VFX packages"
 docker build --build-arg current_host_ip_address=${LOCAL_IP} \
-             -t "usd-docker/vfx-lite:2018-centos7" \
+             -t "docker-usd/vfx-lite:2018-centos7" \
              -f centos7/vfx-lite-2018/Dockerfile .
-docker tag "usd-docker/vfx-lite:2018-centos7" "usd-docker/vfx-lite:latest-centos7"
+docker tag "docker-usd/vfx-lite:2018-centos7" "docker-usd/vfx-lite:latest-centos7"
+docker tag "docker-usd/vfx-lite:2018-centos7" "docker-usd/vfx-lite:latest-centos7"
 
 echo "Build USD v${USD_VERSION}"
 docker build --build-arg current_host_ip_address=${LOCAL_IP} \
              --build-arg usd_version=${USD_VERSION} \
-             -t "usd-docker/usd-lite:${USD_VERSION}-centos7" \
+             -t "docker-usd/usd-lite:${USD_VERSION}-centos7" \
              -f centos7/usd-lite/Dockerfile .
-docker tag "usd-docker/usd-lite:${USD_VERSION}-centos7" "usd-docker/usd-lite:${USD_VERSION}-centos7"
-docker tag "usd-docker/usd-lite:${USD_VERSION}-centos7" "usd-docker/usd-lite:latest-centos7"
+docker tag "docker-usd/usd-lite:${USD_VERSION}-centos7" "docker-usd/usd-lite:${USD_VERSION}-centos7"
+docker tag "docker-usd/usd-lite:${USD_VERSION}-centos7" "docker-usd/usd-lite:latest-centos7"

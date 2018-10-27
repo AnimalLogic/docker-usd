@@ -2,7 +2,8 @@
 # Dockerfile to install maya2018
 # Based on nvidia/base:centos7-usd-0.8
 
-FROM usd-docker/vfx:latest-centos7
+ARG from_name=docker-usd
+FROM ${from_name}/vfx:latest-centos7
 
 ARG current_host_ip_address
 ARG maya_version
