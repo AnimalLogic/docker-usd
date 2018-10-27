@@ -7,5 +7,5 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-- script: cd linux && ./build-centos7.sh
-  displayName: 'docker build'
+- script: cd linux && docker build -t "usd-docker/vfx-lite:2018-centos7" -f centos7/vfx-lite-2018/Dockerfile . && docker tag "usd-docker/vfx-lite:2018-centos7" "usd-docker/vfx-lite:latest-centos7"
+  displayName: 'docker build vfx-lite'
