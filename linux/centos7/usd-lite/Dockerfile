@@ -46,9 +46,18 @@ ENV PYTHONPATH=$PYTHONPATH:$USD_INSTALL_ROOT/lib/python
 
 # RUNTIME IMAGE
 FROM centos:7
+ARG usd_version
 
 RUN yum install -y --setopt=tsflags=nodocs centos-release-scl-rh &&\
     yum install -y --setopt=tsflags=nodocs devtoolset-7-runtime &&\
     yum clean all -y
 
 COPY --from=0 $BUILD_DIR $BUILD_DIR
+
+ENV USD_VERSION=$usd_version
+ENV USD_INSTALL_ROOT=/opt/vfx/usd/${USD_VERSION}
+ENV USD_CONFIG_FILE=$USD_INSTALL_ROOT/pxrConfig.cmake
+ENV PATH=$PATH:$USD_INSTALL_ROOT/bin
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$USD_INSTALL_ROOT/lib
+ENV PYTHONPATH=$PYTHONPATH:$USD_INSTALL_ROOT/lib/python
+ENV LD_PRELOAD=/opt/vfx/lib/libjemalloc.so.2
