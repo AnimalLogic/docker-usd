@@ -21,11 +21,11 @@ ENV HTTP_HOSTNAME=$current_host_ip_address
 
 USER root
 
-RUN yum install -y --setopt=tsflags=nodocs wget bzip2 which python-devel zlib-devel bzip2-devel && yum clean all -y
+RUN yum install -y --setopt=tsflags=nodocs make wget bzip2 which python-devel zlib-devel bzip2-devel && yum clean all -y
 
-COPY scripts/build_vfx.sh scripts/build_vfx_base.sh scripts/download_vfx.sh /tmp/
+COPY scripts/download_vfx-lite-2018.sh /tmp/
 
-RUN /tmp/download_vfx.sh
+RUN /tmp/download_vfx-lite-2018.sh
 
 RUN mkdir -p $TMP_DIR
 

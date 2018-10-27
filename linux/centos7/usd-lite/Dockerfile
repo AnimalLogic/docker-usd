@@ -10,9 +10,10 @@ LABEL pxr.usd.version="$usd_version" maintainer="Aloys.Baillet - Animal Logic"
 ENV USD_VERSION=$usd_version
 ENV HTTP_HOSTNAME=$current_host_ip_address
 
-COPY scripts/download_usd.sh scripts/build_usd.sh /tmp/
+COPY scripts/download_usd.sh /tmp/
 RUN /tmp/download_usd.sh
 RUN yum install -y python-jinja2
+RUN mkdir -p $TMP_DIR
 RUN cd $TMP_DIR && \
    tar -zxf $DOWNLOADS_DIR/USD-v${USD_VERSION}.tar.gz && \
    cd $TMP_DIR/USD-${USD_VERSION} && \
@@ -30,7 +31,7 @@ RUN cd $TMP_DIR && \
       ..
 
 RUN cd $TMP_DIR/USD-${USD_VERSION}/build && \
-  make
+    make -j 4
 
 RUN cd $TMP_DIR/USD-${USD_VERSION}/build && \
     make install
