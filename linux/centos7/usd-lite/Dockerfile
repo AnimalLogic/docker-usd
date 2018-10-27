@@ -37,13 +37,7 @@ RUN cd $TMP_DIR/USD-${USD_VERSION}/build && \
 RUN cd $TMP_DIR/USD-${USD_VERSION}/build && \
     make install
 
-
-ENV USD_INSTALL_ROOT=$BUILD_DIR/usd/${USD_VERSION}
-ENV USD_CONFIG_FILE=$USD_INSTALL_ROOT/pxrConfig.cmake
-ENV PATH=$PATH:$USD_INSTALL_ROOT/bin
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$USD_INSTALL_ROOT/lib
-ENV PYTHONPATH=$PYTHONPATH:$USD_INSTALL_ROOT/lib/python
-
+RUN rm -rf $TMP_DIR
 
 # RUNTIME IMAGE
 FROM centos:7
@@ -53,7 +47,7 @@ RUN yum install -y --setopt=tsflags=nodocs centos-release-scl-rh &&\
     yum install -y --setopt=tsflags=nodocs devtoolset-7-runtime &&\
     yum clean all -y
 
-COPY --from=0 $BUILD_DIR $BUILD_DIR
+COPY --from=0 /opt/vfx /opt/vfx
 
 ENV USD_VERSION=$usd_version
 ENV USD_INSTALL_ROOT=/opt/vfx/usd/${USD_VERSION}
