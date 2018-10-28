@@ -3,8 +3,9 @@ addons:
     packages:
     - docker-ce
 env:
-  matrix:
+  global:
     - USD_VERSION=18.11
+  matrix:
     - secure: IJl+MDUfbXmy/1Udeww5J3InBiJrF8FcJ22BQr8A/tweETtG+/WKIjJgPbbulyd9/Vt7qQZGD3MnHKO5Y+riE5NDVpihYM5Nmv2oyYeF6yGv7NsNH7KJmpLMvBDYOT3W6stDTdV2lVjwQIdS+OSSCQuWf0g/vuDBCut6zblAUXw772LC1/4p8s48jYxWlTc08IaOs9foc6vzjN2MmYW5tfBrYPyfShhkaSy24f9pnvuQYfPGUHJzP+QvuV8rfcnLP15vOpGheigRD1Crapk5oRREQ9ohDptCPXntccDc3PTg+f80wf4C/aH2zFeO3GdF9ZgyrOEq9fOhuBxV3dU9v863+GcPG9bkqylJK3K0jbMSd0CpOJOwNYXA+GmkPQv4WyHxmekIXnQk8V1SruTnpVeekvL5ZK3hVuVHxM9/zNxsloS3ojpdoo/2Jcv7FmTocv2xvmTfae9T1MqJJzUiXXucFA6Jf/s6kWPYswWM+TtraqEVq/urCVGgFsEk8OlXvs0TYtgI/jAZl55Yru1ywBwruw4mMh5r/90UjfaDvhmA5zNRyMduu2xaoFqD14nfKz6ojwbqyZrzzQhJAG7aVFHTqFGS+9TegZN566SCMC5vFtgMmroY2QkNSVzLDgvpAURK9Qdetwo0ux965HAG8Mp/eu4dCVPMgUldWUYMK3w=
 script:
   - cd linux
