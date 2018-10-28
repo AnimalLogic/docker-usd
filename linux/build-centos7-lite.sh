@@ -12,7 +12,7 @@ echo "Copy local root certificates for corporate networks"
 
 export LOCAL_IP=`hostname -I|cut -d' ' -f1`
 
-scripts/download_vfx.sh
+scripts/download_vfx-lite-2018.sh
 scripts/download_usd.sh
 
 # Start a local server to serve files needed during the build.

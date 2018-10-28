@@ -25,7 +25,7 @@ function getFileWithFallback() {
   fi
 }
 
-getFileWithFallback cmake-3.12.3.tar.gz https://cmake.org/files/v3.12/cmake-3.12.3.tar.gz
+getFileWithFallback cmake-3.12.3-Linux-x86_64.sh https://cmake.org/files/v3.12/cmake-3.12.3-Linux-x86_64.sh
 
 getFileWithFallback boost_1_61_0.tar.bz2 https://svwh.dl.sourceforge.net/project/boost/boost/1.61.0/boost_1_61_0.tar.bz2
 

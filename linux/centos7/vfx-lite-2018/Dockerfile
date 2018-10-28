@@ -27,17 +27,14 @@ COPY scripts/download_vfx-lite-2018.sh /tmp/
 
 RUN /tmp/download_vfx-lite-2018.sh
 
-RUN mkdir -p $TMP_DIR
+RUN mkdir -p $TMP_DIR && mkdir -p $BUILD_DIR
 
 #----------------------------------------------
 # build and install cmake
 #----------------------------------------------
 RUN cd $TMP_DIR &&\
-    tar -zxf $DOWNLOADS_DIR/cmake-3.12.3.tar.gz &&\
-    cd $TMP_DIR/cmake-3.12.3 && \
-    ./bootstrap --prefix=$BUILD_DIR && \
-    make -j ${BUILD_PROCS} && \
-    make install
+    chmod u+x $DOWNLOADS_DIR/cmake-3.12.3-Linux-x86_64.sh && \
+    $DOWNLOADS_DIR/cmake-3.12.3-Linux-x86_64.sh --skip-license --prefix=$BUILD_DIR
 
 #----------------------------------------------
 # build and install boost
