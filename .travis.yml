@@ -6,11 +6,13 @@ env:
   matrix:
     secure: IJl+MDUfbXmy/1Udeww5J3InBiJrF8FcJ22BQr8A/tweETtG+/WKIjJgPbbulyd9/Vt7qQZGD3MnHKO5Y+riE5NDVpihYM5Nmv2oyYeF6yGv7NsNH7KJmpLMvBDYOT3W6stDTdV2lVjwQIdS+OSSCQuWf0g/vuDBCut6zblAUXw772LC1/4p8s48jYxWlTc08IaOs9foc6vzjN2MmYW5tfBrYPyfShhkaSy24f9pnvuQYfPGUHJzP+QvuV8rfcnLP15vOpGheigRD1Crapk5oRREQ9ohDptCPXntccDc3PTg+f80wf4C/aH2zFeO3GdF9ZgyrOEq9fOhuBxV3dU9v863+GcPG9bkqylJK3K0jbMSd0CpOJOwNYXA+GmkPQv4WyHxmekIXnQk8V1SruTnpVeekvL5ZK3hVuVHxM9/zNxsloS3ojpdoo/2Jcv7FmTocv2xvmTfae9T1MqJJzUiXXucFA6Jf/s6kWPYswWM+TtraqEVq/urCVGgFsEk8OlXvs0TYtgI/jAZl55Yru1ywBwruw4mMh5r/90UjfaDvhmA5zNRyMduu2xaoFqD14nfKz6ojwbqyZrzzQhJAG7aVFHTqFGS+9TegZN566SCMC5vFtgMmroY2QkNSVzLDgvpAURK9Qdetwo0ux965HAG8Mp/eu4dCVPMgUldWUYMK3w=
 script:
+  - cd linux
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - cd linux && docker build -t "${DOCKER_USERNAME}/vfx-lite:2018-centos7" -f centos7/vfx-lite-2018/Dockerfile .
-  - docker tag "${DOCKER_USERNAME}/vfx-lite:2018-centos7" "${DOCKER_USERNAME}/vfx-lite:latest-centos7"
-  - docker push ${DOCKER_USERNAME}/vfx-lite
-  - cd linux && docker build --build-arg usd_version=18.11 --build-arg from_name=${DOCKER_USERNAME} -t "${DOCKER_USERNAME}/usd-lite:${USD_VERSION}-centos7" -f centos7/usd-lite/Dockerfile .
-  - docker tag "${DOCKER_USERNAME}/usd-lite:${USD_VERSION}-centos7" "${DOCKER_USERNAME}/usd-lite:${USD_VERSION}-centos7"
-  - docker tag "${DOCKER_USERNAME}/usd-lite:${USD_VERSION}-centos7" "${DOCKER_USERNAME}/usd-lite:latest-centos7"
-  - docker push ${DOCKER_USERNAME}/usd-lite
+  - set dockerId=${DOCKER_USERNAME}
+  - docker build -t "$dockerId/vfx-lite:2018-centos7" -f centos7/vfx-lite-2018/Dockerfile .
+  - docker tag "$dockerId/vfx-lite:2018-centos7" "$dockerId/vfx-lite:latest-centos7"
+  - docker push $dockerId/vfx-lite
+  - docker build --build-arg usd_version=18.11 --build-arg from_name=$dockerId -t "$dockerId/usd-lite:${USD_VERSION}-centos7" -f centos7/usd-lite/Dockerfile .
+  - docker tag "$dockerId/usd-lite:${USD_VERSION}-centos7" "$dockerId/usd-lite:${USD_VERSION}-centos7"
+  - docker tag "$dockerId/usd-lite:${USD_VERSION}-centos7" "$dockerId/usd-lite:latest-centos7"
+  - docker push $dockerId/usd-lite
