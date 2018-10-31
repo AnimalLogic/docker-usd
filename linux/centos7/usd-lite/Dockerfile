@@ -37,7 +37,11 @@ RUN cd $TMP_DIR/USD-${USD_VERSION}/build && \
 RUN cd $TMP_DIR/USD-${USD_VERSION}/build && \
     make install
 
-RUN rm -rf $TMP_DIR
+RUN rm -rf $TMP_DIR && \
+    rm -rf $BUILD_DIR/lib/*.a && \
+    rm -rf $BUILD_DIR/include && \
+    rm -rf $BUILD_DIR/bin/c* && \
+    rm -rf $BUILD_DIR/share
 
 # RUNTIME IMAGE
 FROM centos:7
@@ -47,7 +51,7 @@ RUN yum install -y --setopt=tsflags=nodocs centos-release-scl-rh &&\
     yum install -y --setopt=tsflags=nodocs devtoolset-7-runtime &&\
     yum clean all -y
 
-COPY --from=0 /opt/vfx /opt/vfx
+COPY --from=builder /opt/vfx /opt/vfx
 
 ENV USD_VERSION=$usd_version
 ENV USD_INSTALL_ROOT=/opt/vfx/usd/${USD_VERSION}
