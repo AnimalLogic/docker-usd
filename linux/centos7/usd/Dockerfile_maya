@@ -11,6 +11,7 @@ LABEL pxr.usd.version="${usd_version}" maintainer="Aloys.Baillet - Animal Logic"
 
 ENV USD_VERSION="${usd_version}"
 ENV MAYA_MAJOR_VERSION="${maya_version}"
+ENV HTTP_HOSTNAME="${current_host_ip_address}"
 
 COPY scripts/download_usd.sh scripts/build_usd.sh /tmp/
 RUN /tmp/download_usd.sh && \
