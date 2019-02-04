@@ -8,7 +8,7 @@ if [ -z "$1" ]; then
 fi
 
 export DOWNLOADS_DIR="`pwd`/../downloads"
-export USD_VERSION="18.11"
+export USD_VERSION="19.01"
 export CUDA_VERSION="9.0"
 export MAYA_VERSION="$1"
 
