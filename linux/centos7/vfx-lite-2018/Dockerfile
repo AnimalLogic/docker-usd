@@ -1,3 +1,5 @@
+# Copyright (C) Animal Logic Pty Ltd. All rights reserved.
+
 ############################################################
 # Dockerfile to build a VFX Platform docker image
 

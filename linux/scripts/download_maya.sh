@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright (C) Animal Logic Pty Ltd. All rights reserved.
+
 set -e
 
 # create build dir

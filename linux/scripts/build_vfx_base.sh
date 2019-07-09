@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright (C) Animal Logic Pty Ltd. All rights reserved.
+
 set -ex
 
 # Build script to be run from a single RUN in Dockerfile to minimise image size

@@ -1,3 +1,5 @@
+# Copyright (C) Animal Logic Pty Ltd. All rights reserved.
+
 ############################################################
 # Dockerfile to build USD Maya
 FROM usd-docker/vfx:latest-centos7
