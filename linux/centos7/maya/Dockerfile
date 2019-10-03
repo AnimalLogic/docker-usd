@@ -11,7 +11,7 @@ ARG maya_version
 
 LABEL maya.version="${maya_version}.0" maintainer="Animal Logic"
 
-ENV MAYA_LOCATION=$BUILD_DIR/maya{maya_version}DevKit
+ENV MAYA_LOCATION=$BUILD_DIR/maya${maya_version}DevKit
 ENV HTTP_HOSTNAME=$current_host_ip_address
 ENV MAYA_EXECUTABLE=$MAYA_LOCATION/bin/maya
 ENV MAYA_MAJOR_VERSION="${maya_version}"
