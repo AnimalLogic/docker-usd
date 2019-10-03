@@ -190,8 +190,8 @@ cd $TMP_DIR &&\
 #----------------------------------------------
 mkdir -p $BUILD_DIR/lib64/pkgconfig &&\
     cd $TMP_DIR &&\
-    tar -zxf $DOWNLOADS_DIR/glew-1.10.0.tgz &&\
-    cd $TMP_DIR/glew-1.10.0 &&\
+    tar -zxf $DOWNLOADS_DIR/glew-2.0.0.tgz &&\
+    cd $TMP_DIR/glew-2.0.0 &&\
     make install GLEW_DEST=$BUILD_DIR LIBDIR=$BUILD_DIR/lib;
 
 #----------------------------------------------
