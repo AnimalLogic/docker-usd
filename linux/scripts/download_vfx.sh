@@ -57,7 +57,7 @@ getFileWithFallback ilmbase-2.2.0.tar.gz http://download.savannah.nongnu.org/rel
 
 getFileWithFallback ttf-bitstream-vera-1.10.tar.gz http://archive.ubuntu.com/ubuntu/pool/universe/t/ttf-bitstream-vera/ttf-bitstream-vera_1.10.orig.tar.gz
 
-getFileWithFallback glew-1.10.0.tgz "https://downloads.sourceforge.net/project/glew/glew/1.10.0/glew-1.10.0.tgz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fglew%2Ffiles%2Fglew%2F1.10.0%2Fglew-1.10.0.tgz%2Fdownload&ts=1501043354&use_mirror=svwh"
+getFileWithFallback glew-2.0.0.tgz "https://sourceforge.net/projects/glew/files/glew/2.0.0/glew-2.0.0.tgz/download"
 
 getFileWithFallback OpenColorIO-1.0.9.tar.gz https://github.com/imageworks/OpenColorIO/archive/v1.0.9.tar.gz
 

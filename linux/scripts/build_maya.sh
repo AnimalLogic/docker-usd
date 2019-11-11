@@ -32,4 +32,9 @@ tar xvf qt-5.6.1-cmake.tar.gz
 cd $MAYA_LOCATION/mkspecs
 tar xvf qt-5.6.1-mkspecs.tar.gz
 
+# Dummy mayapy for USD's FindMaya cmake macro
+mkdir $MAYA_LOCATION/bin
+touch $MAYA_LOCATION/bin/mayapy
+chmod +x $MAYA_LOCATION/bin/mayapy
+
 rm -rf $TMP_DIR
