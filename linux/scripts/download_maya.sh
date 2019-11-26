@@ -27,8 +27,14 @@ function getFileWithFallback() {
   fi
 }
 
-if [ "$MAYA_MAJOR_VERSION" = "2018" ]; then
+if [ "$MAYA_VERSION" = "2018" ]; then
   getFileWithFallback Maya2018_DEVKIT_Linux.tgz https://s3-us-west-2.amazonaws.com/autodesk-adn-transfer/ADN+Extranet/M%26E/Maya/devkit+2018/Maya2018u4_DEVKIT_Linux.tgz ;
+elif [ "$MAYA_VERSION" = "2019" ]; then
+  getFileWithFallback Maya2019_DEVKIT_Linux.tgz https://autodesk-adn-transfer.s3-us-west-2.amazonaws.com/ADN+Extranet/M%26E/Maya/devkit+2019/Autodesk_Maya_2019_2_Update_DEVKIT_Linux.tgz ;
+  getFileWithFallback Maya2019.x86_64.rpm https://bogus.com/Maya2019.x86_64.rpm ;  #Assumes you've manually copied the maya RPM into the downloads folder
 else
   getFileWithFallback Maya2017_DEVKIT_Linux.tgz https://s3-us-west-2.amazonaws.com/autodesk-adn-transfer/ADN+Extranet/M%26E/Maya/devkit+2017/Maya2017u4_DEVKIT_Linux.tgz ;
 fi
+
+
+getFileWithFallback googletest-1.8.1.tar.gz https://github.com/google/googletest/archive/release-1.8.1.tar.gz 
