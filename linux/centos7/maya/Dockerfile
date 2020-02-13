@@ -4,7 +4,7 @@
 # Dockerfile to install maya2019
 # Based on nvidia/base:centos7-usd-0.8
 
-FROM aswftesting/ci-vfxall:2019
+FROM aswftesting/ci-vfxall:2019.2
 
 ARG current_host_ip_address
 ARG maya_version
