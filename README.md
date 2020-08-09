@@ -10,7 +10,7 @@ cd linux
 
 To run:
 ```bash
-docker run --rm -v $HOME:$HOME usd-docker/usd-lite:20.08-centos7 usdtree $HOME/Downloads/Kitchen_set/Kitchen_set.usd
+docker run --rm -v $HOME:$HOME dockerusd/usd-lite:20.08-centos7 usdtree $HOME/Downloads/Kitchen_set/Kitchen_set.usd
 
 # ->
 #/
