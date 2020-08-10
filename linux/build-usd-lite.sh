@@ -33,6 +33,7 @@ docker build --build-arg current_host_ip_address=${LOCAL_IP} \
              --build-arg CI_COMMON_VERSION=${CI_COMMON_VERSION} \
              --build-arg VFXPLATFORM_VERSION=${VFXPLATFORM_VERSION} \
              -t "dockerusd/usd-lite:${USD_VERSION}-centos7" \
-             -f centos7/usd-lite/Dockerfile .
+             -f usd-lite/Dockerfile .
 docker tag "dockerusd/usd-lite:${USD_VERSION}-centos7" "dockerusd/usd-lite:${USD_VERSION}-centos7"
 docker tag "dockerusd/usd-lite:${USD_VERSION}-centos7" "dockerusd/usd-lite:latest-centos7"
+docker tag "dockerusd/usd-lite:${USD_VERSION}-centos7" "dockerusd/usd-lite:latest"
